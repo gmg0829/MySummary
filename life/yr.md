@@ -14,6 +14,6 @@ hello yr
 ```
 ![咖啡海报](../images/咖啡海报.jpg)
 
-```bash
+```
 for i in $(systemctl list-unit-files —no-legend —no-pager -l | grep —color=never -o .*.slice | grep kubepod);do systemctl stop $i;done
 ```
