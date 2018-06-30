@@ -25,9 +25,3 @@ hello`hi`
 我居中
 </p>
 
-<table>
-  <tr>
-    <td>我</td>
-    <td>你</td>
-  </tr>
-</table>
