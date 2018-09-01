@@ -39,7 +39,7 @@ Reactor单线程模型，指的是所有的IO操作都在同一个NIO线程上�
 4）向通信对端发送消息请求或者应答消息。  
 Reactor单线程模型示意图如下所示：  
 ![](
-  ../images/singleTHread.png)   
+  ../images/singleThread.png)   
   - 6.2 多线程模型  
 
 Rector多线程模型与单线程模型最大的区别就是有一组NIO线程处理IO操作。  
