@@ -319,16 +319,18 @@ docker-compose [-f=<arg>...] [options] [COMMAND] [ARGS...]
 
     打印某个容器端口所映射的公共端口。
 
-    通过 service=num 的参数来设置数量。例如：
-
-    $ docker-compose scale web=3 db=2
-
-    将启动 3 个容器运行 web 服务，2 个容器运行 db 服务。
+   
 
 -scale
 
  格式为 docker-compose scale [options] [SERVICE=NUM...]。
  设置指定服务运行的容器个数。    
+
+  通过 service=num 的参数来设置数量。例如：
+
+  $ docker-compose scale web=3 db=2
+
+  将启动 3 个容器运行 web 服务，2 个容器运行 db 服务。
 
 ## 使用Docker Compose编排Spring Cloud 服务。
 编排时用到的微服务项目：
@@ -375,7 +377,7 @@ for module in "${modules[@]}"; do
     docker build -t "microservice/${module}:latest" ${module}
 done
 ```
-tree查看microservice文件夹下的目录：
+tree查看microservice文件夹下模块目录：
 ```
  $ tree
 .
@@ -395,7 +397,7 @@ tree查看microservice文件夹下的目录：
     └── zuul-0.0.1-SNAPSHOT.jar
 
 ```
-modules为microservice目录下的各个模块目录，模块目录下存放该模块的jar包和Dockerfile文件。
+modules为各个模块目录，模块目录下存放该模块的jar包和Dockerfile文件。
 
 执行sh buildDockerImage.sh命令，执行完，使用docker images 查看镜像。
 ```
@@ -410,30 +412,25 @@ frolvlad/alpine-oraclejdk8   slim                3ee5e1ce00fc        9 days ago 
 
 3、编写docker-compose-yml
 ```
-discovery:
-  image: microservice/discovery
-  hostname: discovery
-  ports:
-  - "8761:8761"
-server:
-  image: microservice/server
-  ports:
-  - "9000:9000"
-  links:
-  - discovery
-client:
-  image: microservice/client
-  ports:
-  - "9001:9001"
-  links:
-  - discovery
-zuul:
-  image: microservice/zuul
-  ports:
-  - "9002:9002"
-  links:
-  - discovery
-  - client
+version: "3"
+services:
+  discovery:
+    image: microservice/discovery
+    hostname: discovery
+    ports:
+    - "8761:8761"
+  server:
+    image: microservice/server
+    ports:
+    - "9000:9000"
+  client:
+    image: microservice/client
+    ports:
+    - "9001:9001"
+  zuul:
+    image: microservice/zuul
+    ports:
+    - "9002:9002"
 ```
 执行以下命令启动项目。
 ```
@@ -472,6 +469,62 @@ hi gmg,i am from
 
 ## 编排高可用的Spring cloud微服务集群及动态伸缩
 
+1、将所有的服务的注册中心改为
+```
+eureka:
+  client:
+    serviceUrl:
+      defaultZone : http://peer1:8761/eureka/,http://peer2:8762/eureka/
+```
+2、docker-compose-yml修改为
+```
+version: "3"
+services:
+  peer1:
+    image: microservice/discovery
+    ports:
+    - "8761:8761"
+    environment:
+    - spring.profiles.active=peer1
+  peer2:
+    image: microservice/discovery
+    hostname: peer2
+    ports:
+    - "8762:8762"
+    environment:
+    - spring.profiles.active=peer2
+  server:
+    image: microservice/server
+    ports:
+    - "9000:9000"
+  client:
+    image: microservice/client
+    ports:
+    - "9001:9001"
+  zuul:
+    image: microservice/zuul
+    ports:
+    - "9002:9002"
+```
+3、构建镜像
 
+执行sh buildDockerImage.sh命令构建镜像。
 
+4、创建容器
+
+执行 docker-compose up -d  
+查看镜像：
+```
+docker ps
+CONTAINER ID        IMAGE                    COMMAND                  CREATED              STATUS              PORTS                    NAMES
+8dfff5cf705f        microservice/discovery   "java -Djava.securit…"   About a minute ago   Up About a minute   0.0.0.0:8762->8762/tcp   microserviceha_peer2_1
+a89594944490        microservice/client      "java -Djava.securit…"   About a minute ago   Up About a minute   0.0.0.0:9001->9001/tcp   microserviceha_client_1
+29e941b18623        microservice/zuul        "java -Djava.securit…"   About a minute ago   Up About a minute   0.0.0.0:9002->9002/tcp   microserviceha_zuul_1
+18580a21ab2f        microservice/discovery   "java -Djava.securit…"   About a minute ago   Up About a minute   0.0.0.0:8761->8761/tcp   microserviceha_peer1_1
+1bcaaadac4a4        microservice/server      "java -Djava.securit…"   About a minute ago   Up About a minute   0.0.0.0:9000->9000/tcp   microserviceha_server_1
+
+```
+
+5、查看注册中心：
+![](https://github.com/gmg0829/Img/blob/master/dockerImg/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83.png?raw=true)
 
