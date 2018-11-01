@@ -204,7 +204,7 @@ For more examples and ideas, visit:
 
 ### 镜像加速
 
-鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，强烈建议安装 Docker 之后配置国内镜像加速(镜像加速.pdf)。
+鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，强烈建议安装 Docker 之后配置国内镜像加速(accelerate-mirror.pdf)。
 
 ### 1.2 卸载
 ```
@@ -389,7 +389,7 @@ For more examples and ideas, visit:
 
 ### 镜像加速
 
-鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，强烈建议安装 Docker 之后配置 国内镜像加速(镜像加速.pdf)。
+鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，强烈建议安装 Docker 之后配置 国内镜像加速(accelerate-mirror.pdf)。
 
 ### 添加内核参数
 
@@ -496,7 +496,7 @@ $ docker rm webserver
 
 ### 镜像加速
 
-鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，强烈建议安装 Docker 之后配置国内镜像加速，参考(镜像加速.pdf)
+鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，强烈建议安装 Docker 之后配置国内镜像加速，参考(accelerate-mirror.pdf)
 
 ## 4、Windows 10 PC 安装 Docker CE
 
@@ -526,5 +526,5 @@ Docker CE 启动之后会在 Windows 任务栏出现鲸鱼图标。
 
 ### 镜像加速
 
-鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，强烈建议安装 Docker 之后配置 国内镜像加速,参考(镜像加速.pdf)。
+鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，强烈建议安装 Docker 之后配置 国内镜像加速,参考(accelerate-mirror.pdf)。
 
