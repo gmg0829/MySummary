@@ -113,6 +113,7 @@ services:
 - volumes
 
     数据卷所挂载路径设置。可以设置宿主机路径 （HOST:CONTAINER） 或加上访问模式。
+    加载本地目录下的配置文件到容器目标地址下。
     ```
     volumes:
     - /var/lib/mysql
@@ -143,6 +144,40 @@ services:
         - some-network
         - other-network
     ```
+ - depends_on
+
+    解决容器的依赖、启动先后的问题。以下例子中会先启动 redis db 再启动 web
+    ```
+    version: '3'
+    services:
+        web:
+         build: .
+         depends_on:
+            - db
+            - redis
+        redis:
+          image: redis
+        db:
+          image: postgres
+    ```
+    注意：web 服务不会等待 redis db 「完全启动」之后才启动。
+ - container_name
+
+    指定容器名称。默认将会使用 项目名称_服务名称_序号 这样的格式。
+    ```
+    container_name: docker-web-container
+    ```
+    注意: 指定容器名称后，该服务将无法进行扩展（scale），因为 Docker 不允许多个容器具有相同的名称。
+ - restart
+
+     restart: always 表示如果服务启动不成功会一直尝试。   
+ - working_dir   
+     
+     指定容器中工作目录。
+     ```
+     working_dir: /code
+     ```
+
 ## docker-compose常用命令
 docker-compose 命令的基本的使用格式是
 ```
