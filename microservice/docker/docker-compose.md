@@ -318,19 +318,16 @@ docker-compose [-f=<arg>...] [options] [COMMAND] [ARGS...]
     格式为 docker-compose port [options] SERVICE PRIVATE_PORT。
 
     打印某个容器端口所映射的公共端口。
+- scale
 
-   
+    格式为 docker-compose scale [options] [SERVICE=NUM...]。
+    设置指定服务运行的容器个数。    
 
--scale
+    通过 service=num 的参数来设置数量。例如：
 
- 格式为 docker-compose scale [options] [SERVICE=NUM...]。
- 设置指定服务运行的容器个数。    
+    $ docker-compose scale web=3 db=2
 
-  通过 service=num 的参数来设置数量。例如：
-
-  $ docker-compose scale web=3 db=2
-
-  将启动 3 个容器运行 web 服务，2 个容器运行 db 服务。
+    将启动 3 个容器运行 web 服务，2 个容器运行 db 服务。
 
 ## 使用Docker Compose编排Spring Cloud 服务。
 编排时用到的微服务项目：

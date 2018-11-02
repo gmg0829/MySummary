@@ -119,123 +119,125 @@ RUN echo “\ndaemon off;” >> /etc/nginx/nginx.conf
 CMD /usr/sbin/nginx
 ```
 Dockerfile命令详解:  
-1、FROM   
-```
-格式为 FROM <image> 或 FROM <image>:<tag>
-```
-Dockerfile 的第一条指令必须为 FROM 指令。并且，如果在同一个 Dockerfile 中创建多个镜像时，可以使用多个 FROM 指令。
-2、MAINTAINER   
-```
-格式为 MAINTAINER <name>，指定维护者信息。
-```
-3、RUN   
-有两种格式，分别为：
-```
-RUN <command>
-RUN [“executable”, “param1”, “param2”]。
-```
-前者将在 shell 终端中运行命令，即 /bin/sh -c，后者则使用 exec 执行。指定使用其他终端可以通过第二种方式实现，例如 RUN  [“/bin/bash”, “-c”, “echo hello”]。  
 
-每条 RUN 指令将在当前镜像的基础上执行指定命令，并提交为新的镜像。当命令较长时可以使用 \ 来换行。
+    1、FROM   
+    ```
+    格式为 FROM <image> 或 FROM <image>:<tag>
+    ```
+    Dockerfile 的第一条指令必须为 FROM 指令。并且，如果在同一个 Dockerfile 中创建多个镜像时，可以使用多个 FROM 指令。
 
-4、CMD   
-```
-CMD [“executable”, “param1”, “param2”] 使用 exec 执行，推荐方式。
+    2、MAINTAINER   
+    ```
+    格式为 MAINTAINER <name>，指定维护者信息。
+    ```
+    3、RUN   
+    有两种格式，分别为：
+    ```
+    RUN <command>
+    RUN [“executable”, “param1”, “param2”]。
+    ```
+    前者将在 shell 终端中运行命令，即 /bin/sh -c，后者则使用 exec 执行。指定使用其他终端可以通过第二种方式实现，例如 RUN  [“/bin/bash”, “-c”, “echo hello”]。  
 
-CMD command  在/bin/sh 中执行，提供给需要交互的应用。
+    每条 RUN 指令将在当前镜像的基础上执行指定命令，并提交为新的镜像。当命令较长时可以使用 \ 来换行。
 
-CMD [“param1”, “param2”] 提供给 ENTRYPOINT 的默认参数。
-```
-指定启动容器时执行的命令，每个 Dockerfile 只能有一条 CMD 命令。如果指定了多条 CMD 命令，只有最后一条会被执行。如果用户在启动容器时指定了要运行的命令，则会覆盖掉 CMD 指定的命令。
+    4、CMD   
+    ```
+    CMD [“executable”, “param1”, “param2”] 使用 exec 执行，推荐方式。
 
-5、EXPOSE  
+    CMD command  在/bin/sh 中执行，提供给需要交互的应用。
 
-EXPOSE 指令是声明运行时容器提供服务端口。告诉 Docker 服务，容器需要暴露的端口号，供互联系统使用。
-格式为：
-```
-EXPOSE <port> [<port>…]
-```
-6、ENV  
-格式有两种  
-```
-ENV <key> <value>
-ENV <key1>=<value1> <key2>=<value2>...
-```
-指定一个环境变量，会被后续 RUN 指令使用，并在容器运行时保持。例如：
-```
-ENV PG_MAJOR 9.3
-ENV PG_VERSION 9.3.4
-RUN curl -SL http://example.com/postgres-$PG_VERSION.tar.xz | tar -xJC /usr/src/postgress && …
-ENV PATH /usr/local/postgres-$PG_MAJOR/bin:$PATH
-```
-7、ADD  
-格式为：
-```
-ADD src dest
-```
-该命令将复制指定的 src 到容器中的 dest。其中 src 可以是 Dockerfile 所在目录的一个相对路径(文件或目录)；也可以是一个 URL；还可以是一个 tar 文件(自动解压为目录)。
+    CMD [“param1”, “param2”] 提供给 ENTRYPOINT 的默认参数。
+    ```
+    指定启动容器时执行的命令，每个 Dockerfile 只能有一条 CMD 命令。如果指定了多条 CMD 命令，只有最后一条会被执行。如果用户在启动容器时指定了要运行的命令，则会覆盖掉 CMD 指定的命令。
 
-8、COPY  
-格式为：  
-```
-COPY src dest
-```
-复制本地主机的 src (为 Dockerfile 所在目录的相对路径，文件或目录) 为容器中的 dest。目标路径不存在时，会自动创建。当使用本地目录为源目录时，推荐使用 COPY。
+    5、EXPOSE  
 
-9、ENTRYPOINT  
-两种格式:
-```
-ENTRYPOINT [“executable”, “param1”, “param2”]
+    EXPOSE 指令是声明运行时容器提供服务端口。告诉 Docker 服务，容器需要暴露的端口号，供互联系统使用。
+    格式为：
+    ```
+    EXPOSE <port> [<port>…]
+    ```
+    6、ENV  
+    格式有两种  
+    ```
+    ENV <key> <value>
+    ENV <key1>=<value1> <key2>=<value2>...
+    ```
+    指定一个环境变量，会被后续 RUN 指令使用，并在容器运行时保持。例如：
+    ```
+    ENV PG_MAJOR 9.3
+    ENV PG_VERSION 9.3.4
+    RUN curl -SL http://example.com/postgres-$PG_VERSION.tar.xz | tar -xJC /usr/src/postgress && …
+    ENV PATH /usr/local/postgres-$PG_MAJOR/bin:$PATH
+    ```
+    7、ADD  
+    格式为：
+    ```
+    ADD src dest
+    ```
+    该命令将复制指定的 src 到容器中的 dest。其中 src 可以是 Dockerfile 所在目录的一个相对路径(文件或目录)；也可以是一个 URL；还可以是一个 tar 文件(自动解压为目录)。
 
-ENTRYPOINT command param1 param2 (shell 中执行)
-```
-ENTRYPOINT 的目的和 CMD 一样，都是在指定容器启动程序及参数。ENTRYPOINT 在运行时也可以替代，不过比 CMD 要略显繁琐，需要通过 docker run 的参数 --entrypoint 来指定。
+    8、COPY  
+    格式为：  
+    ```
+    COPY src dest
+    ```
+    复制本地主机的 src (为 Dockerfile 所在目录的相对路径，文件或目录) 为容器中的 dest。目标路径不存在时，会自动创建。当使用本地目录为源目录时，推荐使用 COPY。
 
-每个 Dockerfile 中只能有一个 ENTRYPOINT，当指定多个 ENTRYPOINT 时，只有最后一个生效。
+    9、ENTRYPOINT  
+    两种格式:
+    ```
+    ENTRYPOINT [“executable”, “param1”, “param2”]
 
-10、VOLUME   
-格式：
-```
-VOLUME ["<路径1>", "<路径2>"...]
-VOLUME <路径>
-```
-创建一个可以从本地或其他容器挂载的挂载点，一般用来存放数据库和需要保持的数据等。 
+    ENTRYPOINT command param1 param2 (shell 中执行)
+    ```
+    ENTRYPOINT 的目的和 CMD 一样，都是在指定容器启动程序及参数。ENTRYPOINT 在运行时也可以替代，不过比 CMD 要略显繁琐，需要通过 docker run 的参数 --entrypoint 来指定。
 
-11、USER
-格式： 
-```
-USER <用户名>
-```
-USER 指令和 WORKDIR 相似，都是改变环境状态并影响以后的层。WORKDIR 是改变工作目录，USER 则是改变之后层的执行 RUN, CMD 以及 ENTRYPOINT 这类命令的身份。
+    每个 Dockerfile 中只能有一个 ENTRYPOINT，当指定多个 ENTRYPOINT 时，只有最后一个生效。
 
-USER 只是帮助你切换到指定用户而已，这个用户必须是事先建立好的，否则无法切换。
-```
-RUN groupadd -r redis && useradd -r -g redis redis
-USER redis
-RUN [ "redis-server" ]
-```
-12、WORKDIR 
-格式：
-```
-WORKDIR <工作目录路径>
-```
-为后续的 RUN、CMD、ENTRYPOINT 指令配置工作目录。可以使用多个 WORKDIR 指令，后续命令如果参数是相对路径，则会基于之前命令指定的路径。例如：  
-```
-WORKDIR /a
-WORKDIR b
-WORKDIR c
-RUN pwd
-```
-则最终路径为 /a/b/c。
+    10、VOLUME   
+    格式：
+    ```
+    VOLUME ["<路径1>", "<路径2>"...]
+    VOLUME <路径>
+    ```
+    创建一个可以从本地或其他容器挂载的挂载点，一般用来存放数据库和需要保持的数据等。 
 
-13、ONBUILD 
-格式：
-```
-ONBUILD <其它指令>
-```
-ONBUILD 是一个特殊的指令，它后面跟的是其它指令，比如 RUN, COPY 等，而这些指令，在当前镜像构建时并不会被执行。只有当以当前镜像为基础镜像，去构建下一级镜像的时候才会被执行。
+    11、USER
+    格式： 
+    ```
+    USER <用户名>
+    ```
+    USER 指令和 WORKDIR 相似，都是改变环境状态并影响以后的层。WORKDIR 是改变工作目录，USER 则是改变之后层的执行 RUN, CMD 以及 ENTRYPOINT 这类命令的身份。
 
-Dockerfile 中的其它指令都是为了定制当前镜像而准备的，唯有 ONBUILD 是为了帮助别人定制自己而准备的。
+    USER 只是帮助你切换到指定用户而已，这个用户必须是事先建立好的，否则无法切换。
+    ```
+    RUN groupadd -r redis && useradd -r -g redis redis
+    USER redis
+    RUN [ "redis-server" ]
+    ```
+    12、WORKDIR 
+    格式：
+    ```
+    WORKDIR <工作目录路径>
+    ```
+    为后续的 RUN、CMD、ENTRYPOINT 指令配置工作目录。可以使用多个 WORKDIR 指令，后续命令如果参数是相对路径，则会基于之前命令指定的路径。例如：  
+    ```
+    WORKDIR /a
+    WORKDIR b
+    WORKDIR c
+    RUN pwd
+    ```
+    则最终路径为 /a/b/c。
+
+    13、ONBUILD 
+    格式：
+    ```
+    ONBUILD <其它指令>
+    ```
+    ONBUILD 是一个特殊的指令，它后面跟的是其它指令，比如 RUN, COPY 等，而这些指令，在当前镜像构建时并不会被执行。只有当以当前镜像为基础镜像，去构建下一级镜像的时候才会被执行。
+
+    Dockerfile 中的其它指令都是为了定制当前镜像而准备的，唯有 ONBUILD 是为了帮助别人定制自己而准备的。
 ### 参考文档
 - Dockerfie 官方文档：https://docs.docker.com/engine/reference/builder/
 
@@ -253,7 +255,7 @@ $ sudo docker build -t build_repo/first_image /tmp/docker_builder/
 # 如果不想使用上次 build 过程中产生的 cache 可以添加 --no-cache 选项
 $ sudo docker build --no-cache -t build_repo/first_image /tmp/docker_builder
 ```
-6、存出和载入镜像
+## 6、存出和载入镜像
 - 存出镜像
 如果想存出文件到本地文件，可以用docker save命令。例如将本地的镜像ubuntu:14.04镜像为文件ubuntu_14.04.tar
 ```
@@ -264,7 +266,7 @@ docker save -o ubuntu_14.04.tar ubuntu:14.04
 ```
 docker load --input ubuntu_14.04.tar
 ```
-7、上传镜像 
+## 7、上传镜像 
 使用docker push命令上传镜像到仓库。默认上传到DockerHub官方仓库(需要登录)。命令格式：
 ```
 docker push NAME[:TAG]

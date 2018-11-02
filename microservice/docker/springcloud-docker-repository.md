@@ -131,6 +131,7 @@ df64d3292fd6: Pushed
 - resources.resource.include 需要复制的文件 
 
 - serverId与第一步中的id相同。
+
 3、执行一下命令
 ```
  mvn clean package docker:build -DpushImage
