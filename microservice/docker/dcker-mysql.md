@@ -1,4 +1,4 @@
-# Docker安装Mysql
+# Docker&Mysql
 ## 安装版本5.6
 ```
 docker run -p 53306:3306 -v $PWD/mysqldata:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --name mysql56 -d mysql:5.6
@@ -32,3 +32,7 @@ ERROR 2059 (HY000): Authentication plugin 'caching_sha2_password' cannot be load
 default_authentication_plugin=mysql_native_password
 ```
 
+### 备份数据库
+```
+docker exec some_mysql sh -c "exec mysqldump --all-databases -u root -proot"> /var/local/all-databases.sql"
+```
