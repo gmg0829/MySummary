@@ -70,3 +70,23 @@ docker export 7691a814370e > ubuntu.tar
 ```
 cat ubuntu.tar | docker import - test/ubuntu:v1.0
 ```
+7、显示容器使用的系统资源
+```
+docker stats
+```
+默认情况下，stats 命令会每隔 1 秒钟刷新一次输出的内容直到你按下 ctrl + c。下面是输出的主要内容：
+```
+[CONTAINER]：以短格式显示容器的 ID。
+[CPU %]：CPU 的使用情况。
+[MEM USAGE / LIMIT]：当前使用的内存和最大可以使用的内存。
+[MEM %]：以百分比的形式显示内存使用情况。
+[NET I/O]：网络 I/O 数据。
+[BLOCK I/O]：磁盘 I/O 数据。 
+[PIDS]：PID 号。
+```
+只输出指定的容器
+
+如果我们只想查看个别容器的资源使用情况，可以为 docker stats 命令显式的指定目标容器的名称或者是 ID：
+```
+docker stats --no-stream registry 1493
+```
