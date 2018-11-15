@@ -75,3 +75,6 @@ docker run -d --name grafana -p 3000:3000 \
 
 ![](https://github.com/gmg0829/Img/blob/master/dockerImg/show-panel.png?raw=true)
 
+
+参考地址链接：
+- [打造高逼格、可视化的Docker容器监控系统平台](http://mp.weixin.qq.com/s?__biz=MzI0MDQ4MTM5NQ==&mid=2247486129&idx=1&sn=986d170f115071cbe676d211a0458008&chksm=e91b6fadde6ce6bb271dedda23acef2c031ee3bdd7d9e2034ceab9a9e2c65f2caa98932e9491&scene=21#wechat_redirect)

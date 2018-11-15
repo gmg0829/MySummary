@@ -259,10 +259,7 @@ $ sudo yum install -y yum-utils \
 执行下面的命令添加 `yum` 软件源：
 
 ```bash
-$ sudo yum-config-manager \
-    --add-repo \
-    https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
-
+$ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 
 # 官方源
 # $ sudo yum-config-manager \
