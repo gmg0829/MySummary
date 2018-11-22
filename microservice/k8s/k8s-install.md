@@ -36,6 +36,7 @@ EOF
 sysctl --system
 #关闭系统Swap
 swapoff -a
+sed -i 's/.*swap.*/#&/' /etc/fstab
 ```
 ## 镜像准备
 如果你的节点上面有科学上网的工具，可以忽略这一步，我们需要提前将所需的gcr.io上面的镜像下载到节点上面，当然前提条件是你已经成功安装了docker。
