@@ -135,3 +135,20 @@ event|ev
 endpoints|ep
 deployments|deploy
 configmaps|cm
+
+
+### Kubernetes kubectl get 命令详解
+列出所有运行的Pod信息。
+```
+kubectl get pods
+```
+
+列出Pod以及运行Pod节点信息。
+```
+kubectl get pods -o wide
+```
+
+列出指定NAME的 replication controller信息。
+```
+kubectl get replicationcontroller web
+```
