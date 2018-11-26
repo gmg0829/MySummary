@@ -1,4 +1,4 @@
-# Jenkins、Gitlab、Docker Hub与Docker的自动化CI/CD实战
+# Jenkins、Gitlab、Aliyun registry与Docker的自动化CI/CD实战
 ## gitlab
 ### 1、配置yum源
 ```
