@@ -177,7 +177,53 @@ services:
      ```
      working_dir: /code
      ```
-
+事例:
+```
+version: '3'
+services:
+  nginx:
+   container_name: v-nginx
+   image: nginx:1.13
+   restart: always
+   ports:
+   - 80:80
+   - 443:443
+   volumes:
+   - ./nginx/conf.d:/etc/nginx/conf.d
+    
+  mysql:
+   container_name: v-mysql
+   image: mysql/mysql-server:5.7
+   environment:
+    MYSQL_DATABASE: test
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_ROOT_HOST: '%'
+   cpuset: 0,1
+   cpu_shares: 73
+   domainname: foo.com
+   hostname: foo
+   ipc: host
+   mac_address: 02:42:ac:11:65:43
+   mem_limit: 1000000000
+   memswap_limit: 2000000000
+   ports:
+   - "3306:3306"
+   restart: always
+    
+  app:
+    restart: always
+    build: ./app
+    working_dir: /app
+    volumes:
+      - ./app:/app
+      - ~/.m2:/root/.m2
+    expose:
+      - "8080"
+    depends_on:
+      - nginx
+      - mysql
+    command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker
+```
 ## docker-compose常用命令
 docker-compose 命令的基本的使用格式是
 ```

@@ -249,50 +249,66 @@ $ docker network inspect mynet
  overlay网络模式如下：
 ![](https://github.com/gmg0829/Img/blob/master/dockerImg/overlay.png?raw=true)
 
- 
+#### 容器访问控制
 
-Docker目前提供了映射容器端口到宿主机和容器互联机制为容器提供网络服务。
+1、容器访问外部网络
 
-#### 端口映射访问容器应用
+由于容器默认指定了网关为docker0网桥上的docker0内部接口，docker0内部接口是本地宿主机的一个本地接口。因此，默认容器是可以访问外部网络的。
+容器想要通过宿主机访问到外部网络，需要宿主机进行网络转发。
+
+在宿主机Linux系统中，检查转发是否打开：
+```
+$ sudo sysctl net.ipv4.ip_forward
+如果为0，未开启，手动打开
+$  sudo sysctl -w net.ipv4.ip_forward=1
+```
+2、外部访问容器
+
 在启动容器的时候,如果不指定对应参数,在容器外部是无法通过网络来访问容器内的网络应用和服务的。
 
 当容器中运行一些网络应用,要让外部访问时，可以通过-P或-p参数来指定端口映射。
 
-#### 容器互联实现容器间通信
-容器的连接，它会在源和接受容器之间创建一个隧道，接受容器能看到源容器指定的信息。连接系统依据容器的名称来执行。
+3、容器之间访问
 
-创建一个web容器并连接到db容器。
-```
-$ docker run -d --name db  training/mysql
-$ docker run -d -P --name web --link db:db training/webapp
-```
-Docker通过两种方式为容器公开连接信息:
-- 环境变量
-- 更新/etc/hosts文件
-使用env命令查看web容器的环境变量
-```
-$ docker run --rm --name web2 --link db:db training/webapp env
-...
-DB_NAME=web2/db
-DB_PORT=tcp://172.17.0.5:5432
-DB_PORT_5000_TCP=tcp://172.17.0.5:5432
-DB_PORT_5000_TCP_PROTO=tcp
-DB_PORT_5000_TCP_PORT=5432
-DB_PORT_5000_TCP_ADDR=172.17.0.5
-```
-其中DB_开头的环境变量是提供web容器连接到db容器使用,前缀采用大写的连接别名。
+  默认情况下，所有容器都会连接到docker0网桥上，这意味着网络拓扑是互通的。
 
-除了环境变量,Docker还添加host信息到父容器的/etc/hosts的文件。下面是父容器web的hosts文件:
-```
-$ cat /etc/hosts
-172.17.0.7 aed84ee21bde
-.
-.
-172.17.0.7 db
-```
-这两个有hosts信息,第一个是web容器,web容器使用自己的id做为默认主机名,
-第二个是db的ip和容器名。
+ - 方式一： 使用容器的IP地址来通信
+ - 方式二：使用宿主机的IP加上容器暴露出的端口号来通信
+ - 方式三：使用docker的link机制通信
 
+     容器的连接，它会在源和接受容器之间创建一个隧道，接受容器能看到源容器指定的信息。连接系统依据容器的名称来执行。
+
+    创建一个web容器并连接到db容器。
+    ```
+    $ docker run -d --name db  training/mysql
+    $ docker run -d -P --name web --link db:db training/webapp
+    ```
+    Docker通过两种方式为容器公开连接信息:
+    - 环境变量
+    - 更新/etc/hosts文件
+    使用env命令查看web容器的环境变量
+    ```
+    $ docker run --rm --name web2 --link db:db training/webapp env
+    ...
+    DB_NAME=web2/db
+    DB_PORT=tcp://172.17.0.5:5432
+    DB_PORT_5000_TCP=tcp://172.17.0.5:5432
+    DB_PORT_5000_TCP_PROTO=tcp
+    DB_PORT_5000_TCP_PORT=5432
+    DB_PORT_5000_TCP_ADDR=172.17.0.5
+    ```
+    其中DB_开头的环境变量是提供web容器连接到db容器使用,前缀采用大写的连接别名。
+
+    除了环境变量,Docker还添加host信息到父容器的/etc/hosts的文件。下面是父容器web的hosts文件:
+    ```
+    $ cat /etc/hosts
+    172.17.0.7 aed84ee21bde
+    .
+    .
+    172.17.0.7 db
+    ```
+    这两个有hosts信息,第一个是web容器,web容器使用自己的id做为默认主机名,
+    第二个是db的ip和容器名。
 
 ### 网络相关参数
  docker run执行时执行

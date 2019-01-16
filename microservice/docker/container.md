@@ -8,6 +8,27 @@ docker create命令创建一个容器，例如：
 
 2、新建并启动容器
 docker run等价于先执行docker create,后执行docker start。
+
+docker run [OPTIONS] IMAGE [COMMAND] [ARG...] 
+```
+-d, --detach=false         指定容器运行于前台还是后台，默认为false
+-u, --user=""              指定容器的用户   
+-i, --interactive=false   打开STDIN，用于控制台交互  
+-t, --tty=false            分配tty设备，该可以支持终端登录，默认为false 
+-m, --memory=""            指定容器的内存上限 
+-h, --hostname=""          指定容器的主机名  
+--name=""                  指定容器名字，后续可以通过名字进行容器管理，links特性需要使用名字
+--net="bridge"             容器网络设置
+-v, --volume=[]            给容器挂载存储卷，挂载到容器的某个目录
+-P, --publish-all=false    指定容器暴露的端口
+-p, --publish=[]           指定容器暴露的端口
+--cpus=2                   指定容器最多可以使用主机上几个CPU
+--cpuset-cpus=""           指定容器使用哪几个cpu
+--volumes-from=[]          给容器挂载其他容器上的卷，挂载到容器的某个目录
+--blkio-weight=0           块IO权重（相对权重）接受10和1000之间的权重值。
+ --rm=false                 指定容器停止后自动删除容器(不支持以docker run -d启动的容器) 
+```
+事例：
 ``` 
 1、 docker run -d --name nginx nginx:latest  
 后台启动并运行一个名为nginx的容器，运行前它会自动去docker镜像站点下载最新的镜像文件  
@@ -15,8 +36,10 @@ docker run等价于先执行docker create,后执行docker start。
 后台启动并运名为nginx的容器，然后将容器的80端口映射到物理机的80端口
 3、docker run -d -v /docker/data:/docker/data -p 80:80 nginx:latest  
 后台启动并运名为nginx的容器，然后将容器的80端口映射到物理机的80端口,并且将物理机的/docker/data目录映射到容器的/docker/data
-3、docker run -it  nginx:latest /bin/bash  
+4、docker run -it  nginx:latest /bin/bash  
 以交互式模式运行容器，然后在容器内执行/bin/bash命令
+5、 docker run -it -m 300M ubuntu:14.04 /bin/bash
+ 指定ubuntu容器的内存上限
  ```
 3、终止容器  
 使用docker stop来停止运行中的容器。
