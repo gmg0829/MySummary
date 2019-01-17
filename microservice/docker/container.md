@@ -26,7 +26,8 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 --cpuset-cpus=""           指定容器使用哪几个cpu
 --volumes-from=[]          给容器挂载其他容器上的卷，挂载到容器的某个目录
 --blkio-weight=0           块IO权重（相对权重）接受10和1000之间的权重值。
- --rm=false                 指定容器停止后自动删除容器(不支持以docker run -d启动的容器) 
+ --rm=false                指定容器停止后自动删除容器(不支持以docker run -d启动的容器) 
+ --ip                      指定IPv4 地址
 ```
 事例：
 ``` 

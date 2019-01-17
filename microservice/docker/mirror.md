@@ -76,6 +76,10 @@ docker rmi $(docker image ls -q redis)
 ```
 docker rmi $(docker images -q)
 ```
+删除所有为none镜像 
+```
+ docker rmi $(docker images | grep "none" | awk '{print $3}')
+```
 ## 5、镜像创建
 创建镜像的方式有三种：基于已有镜像的容器创建、基于Dockerfile创建。
 ### 5.1 基于已有镜像的容器创建 
