@@ -71,7 +71,6 @@ mesoscloud/mesos-slave
 ![](https://github.com/gmg0829/Img/blob/master/mesos/mesos-agent.png?raw=true)
 
 #### 4、通过Marathon发布应用
-
 ```
 {
   "id":"nginxgmg",
