@@ -1,0 +1,5 @@
+ location / {
+             root /usr/local/webapps/dist;
+             index  index.html index.htm;
+             autoindex on;
+        }
