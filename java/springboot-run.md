@@ -1,0 +1,13 @@
+```
+export JAVA_HOME=/usr/local/jdk1.7.0_79
+export JAVA_BIN=$JAVA_HOME/bin
+export PATH=$PATH:$JAVA_BIN
+export CLASSPATH=$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+
+nohup java -Xms500m -Xmx500m -Xmn250m -Xss256k -server -XX:+HeapDumpOnOutOfMemoryError -jar test-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev >log.file 2>&1  &
+
+```
+
+
+

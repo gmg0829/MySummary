@@ -34,3 +34,64 @@ bin/neo4j-admin import --nodes:Movie import/movie_node.csv --delimiter ";" --arr
 docker restart xx
 ```
 
+```
+CALL apoc.periodic.iterate(
+    'CALL apoc.load.csv("{filename}") yield map as row return row'
+    ,'merge (n:{label} {pid:row.pid}) with *
+    merge (n_e:{label_end} {pid:row.pid_end}) with *
+    merge (n)-[r:watching]->(n_e) '
+    ,'{batchSize:10000, iterateList:true, parallel:true}'
+    )
+	;
+```
+
+https://blog.csdn.net/wenxuechaozhe/article/details/80548835
+
+https://blog.csdn.net/linsea/article/details/83463213
+
+
+```
+WITH 'https://raw.githubusercontent.com/neo4j-contrib/neo4j-apoc-procedures/3.3.0.2/src/test/resources/person.json' AS url
+CALL apoc.load.json(url) YIELD value as person
+MERGE (p:Person {name:person.name})
+   ON CREATE SET p.age = person.age,  p.children = size(person.children);
+```
+
+```
+CALL apoc.load.json("/neo4jJson/agency.json") YIELD value as agency
+            MERGE (a:Agency {name:agency.name})
+            ON CREATE SET a.age = agency.age
+            ON MATCH SET a.age = agency.age
+            return count(*)
+```
+
+```
+CALL apoc.load.json("/neo4jJson/re.json") YIELD value as re
+        MATCH (cust:Customer{id:re.cid}),(cc:CreditCard{id:re.did})
+        merge (cust)-[r:DO_SHOPPING{name:re.rName}]->(cc)
+        return count(*)
+
+MATCH (cust:Customer),(cc:CreditCard) 
+CREATE (cust)-[r:DO_SHOPPING{shopdate:"12/12/2014",price:55000}]->(cc) 
+RETURN r
+```
+
+
+所以最好把csv文件放到import目录下，注意，事先，进入$NEO_HOME/conf/neo4j.conf配置文件并取消这一行的注释：
+
+dbms.directories.import=import
+
+
+
+nohup java -jar DataVisualDiscriminationTask-0.0.1-SNAPSHOT.jar > log.file 2>&1 &
+
+mvn package -Dmaven.test.skip=true  
+
+
+
+
+MATCH (n:CCustomer) where  n.CUSTOMER_ID='001700192976' return n.CUSTOMER_NAME
+
+
+
+状态：0-准备失败  1-准备就绪  2-计算已完成
