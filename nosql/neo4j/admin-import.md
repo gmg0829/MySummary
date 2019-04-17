@@ -70,28 +70,33 @@ CALL apoc.load.json("/neo4jJson/re.json") YIELD value as re
         MATCH (cust:Customer{id:re.cid}),(cc:CreditCard{id:re.did})
         merge (cust)-[r:DO_SHOPPING{name:re.rName}]->(cc)
         return count(*)
-
-MATCH (cust:Customer),(cc:CreditCard) 
-CREATE (cust)-[r:DO_SHOPPING{shopdate:"12/12/2014",price:55000}]->(cc) 
-RETURN r
 ```
 
 
+```
 所以最好把csv文件放到import目录下，注意，事先，进入$NEO_HOME/conf/neo4j.conf配置文件并取消这一行的注释：
 
 dbms.directories.import=import
 
+开启引入文件
 
-
-nohup java -jar DataVisualDiscriminationTask-0.0.1-SNAPSHOT.jar > log.file 2>&1 &
+apoc.import.file.enabled=true
+```
 
 mvn package -Dmaven.test.skip=true  
 
 
 
 
-MATCH (n:CCustomer) where  n.CUSTOMER_ID='001700192976' return n.CUSTOMER_NAME
 
 
 
-状态：0-准备失败  1-准备就绪  2-计算已完成
+
+
+
+
+
+
+
+
+
