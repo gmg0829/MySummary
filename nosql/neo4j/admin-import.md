@@ -25,6 +25,17 @@ neo4j-admin import [--mode=csv] [--database=<name>]
 bin/neo4j-admin import --nodes:Movie import/movie_node.csv --delimiter ";" --array-delimiter "|" --quote "'"
 ```
 
+```
+neo4j-admin import --mode=csv --database=userMovie.db --nodes importdata_test\movies.csv --nodes importdata_test\actors.csv --relationships importdata_test\roles.csv
+
+连接数据方式：建立软连接
+
+move graph.db graph_copy.db
+
+mklink /D graph.db userMovie.db windows
+
+ln -s graph.db userMovie.db
+```
 通过neo4j-admin方式导入的话，需要暂停服务，并且需要清除graph.db,这样才能导入进去数据。而且，只能在初始化数据时，导入一次之后，就不能再次导入。
 
 所以这种方式，可以在初次建库的时候，导入大批量数据，等以后如果还需要导入数据时，可以采用上边的方法
