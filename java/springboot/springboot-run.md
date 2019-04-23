@@ -9,5 +9,9 @@ nohup java -Xms500m -Xmx500m -Xmn250m -Xss256k -server -XX:+HeapDumpOnOutOfMemor
 
 ```
 
+```
+java -jar demo-0.0.1-SNAPSHOT.jar --spring.config.location=./config/application-dev.properties
+```
+
 
 
