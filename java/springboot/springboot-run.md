@@ -14,4 +14,9 @@ java -jar demo-0.0.1-SNAPSHOT.jar --spring.config.location=./config/application-
 ```
 
 
+mvn package -Dmaven.test.skip=true  
+
+
+https://segmentfault.com/a/1190000015451706
+
 

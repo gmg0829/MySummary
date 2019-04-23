@@ -94,7 +94,7 @@ dbms.directories.import=import
 apoc.import.file.enabled=true
 ```
 
-mvn package -Dmaven.test.skip=true  
+
 
 
 
