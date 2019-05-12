@@ -92,6 +92,8 @@ dbms.directories.import=import
 开启引入文件
 
 apoc.import.file.enabled=true
+
+dbms.security.procedures.unrestricted=apoc.*
 ```
 
 

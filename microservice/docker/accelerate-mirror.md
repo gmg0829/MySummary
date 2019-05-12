@@ -38,7 +38,7 @@ $ sudo service docker restart
 ```
 
 > 注意，一定要保证该文件符合 json 规范，否则 Docker 将不能启动。
-
+                    
 之后重新启动服务。
 
 ```bash
