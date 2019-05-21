@@ -22,14 +22,22 @@ neo4j-admin import [--mode=csv] [--database=<name>]
 ## 导入数据
 
 ```
-bin/neo4j-admin import --nodes:Movie import/movie_node.csv --delimiter ";" --array-delimiter "|" --quote "'"
-```
+bin/neo4j-admin import --nodes:Movie import/movie_node.csv --delimiter ";" --array-delimiter "|" --quote "'" --ignore-missing-nodes
 
 ```
-neo4j-admin import --mode=csv --database=userMovie.db --nodes importdata_test\movies.csv --nodes importdata_test\actors.csv --relationships importdata_test\roles.csv
 
-连接数据方式：建立软连接
+```
+https://neo4j.com/docs/operations-manual/current/tutorial/import-tool/
 
+
+neo4j-admin import --mode=csv --database=userMovie.db --nodes data_test\movies.csv --nodes data_test\actors.csv --relationships data_test\roles.csv
+
+
+bin/neo4j-admin import --nodes:Movie import/movie_node.csv --relationships:ACTED_IN=import/roles5b.csv
+
+
+
+连接据方式：建立软连接
 move graph.db graph_copy.db
 
 mklink /D graph.db userMovie.db windows
@@ -55,10 +63,6 @@ CALL apoc.periodic.iterate(
     )
 	;
 ```
-
-https://blog.csdn.net/wenxuechaozhe/article/details/80548835
-
-https://blog.csdn.net/linsea/article/details/83463213
 
 
 ```
@@ -97,16 +101,19 @@ dbms.security.procedures.unrestricted=apoc.*
 ```
 
 
+http://weikeqin.cn/2017/04/14/neo4j-import-data/
 
+https://blog.csdn.net/c1052981766/article/details/79530061
 
+https://blog.csdn.net/superman_xxx/article/details/83589953
 
+https://blog.csdn.net/xingxiupaioxue/article/details/71747284
 
+http://weikeqin.cn/categories/Neo4j/page/2/
 
+https://blog.csdn.net/wenxuechaozhe/article/details/80548835
 
-
-
-
-
+https://blog.csdn.net/linsea/article/details/83463213
 
 
 
