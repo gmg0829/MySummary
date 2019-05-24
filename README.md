@@ -1,2 +1,2 @@
 # MySummay
-work、ife、study
+work、life、study
