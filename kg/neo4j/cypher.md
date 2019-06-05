@@ -193,6 +193,7 @@ MATCH (book { id:122 })
 REMOVE book.price
 RETURN book
 ```
+
 ##  SET子句
 
 - 向现有节点或关系添加新属性
@@ -318,4 +319,3 @@ ASSERT cc.number IS UNIQUE
 DROP CONSTRAINT ON (cc:CreditCard)
 ASSERT cc.number IS UNIQUE
 ```
-
