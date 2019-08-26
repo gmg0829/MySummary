@@ -79,6 +79,6 @@ POST _analyze
   "text": "这个苹果不大好吃"
 }
 
-相关阅读
+## 相关阅读
 https://www.elastic.co/guide/en/elasticsearch/reference/7.1/indices-analyze.html
 https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer-anatomy.html

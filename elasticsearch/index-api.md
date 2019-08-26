@@ -1,12 +1,57 @@
 # 索引api
 
-### 索引
-
-索引api
+### 新建索引
 
 ```
-#查看索引相关信息
-GET kibana_sample_data_ecommerce
+PUT test
+{
+    "settings" : {
+        "number_of_shards" : 1
+    },
+    "mappings" : {
+        "properties" : {
+            "field1" : { "type" : "text" }
+        }
+    }
+}
+
+PUT twitter
+{
+    "settings" : {
+        "index" : {
+            "number_of_shards" : 3, 
+            "number_of_replicas" : 2 
+        }
+    }
+}
+```
+
+### 删除索引
+```
+DELETE test
+```
+
+### 获取索引
+
+```
+GET test
+```
+
+### 更新索引_settings
+
+```
+PUT /twitter/_settings
+{
+    "index" : {
+        "number_of_replicas" : 2
+    }
+}
+```
+### 获取索引_settings
+
+```
+GET /twitter/_settings
+```
 
 #查看索引的文档总数
 GET kibana_sample_data_ecommerce/_count

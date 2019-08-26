@@ -1,4 +1,4 @@
-# 设计模式
+# 设计模式之Mybatis
 
 ## Builder模式
 

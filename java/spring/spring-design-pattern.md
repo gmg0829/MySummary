@@ -62,7 +62,7 @@ Spring中的JdbcTemplate,RestTemplate。
 
 Spring中用到的包装器模式在类名上有两种表现：一种是类名中含有Wrapper，另一种是类名中含有Decorator。基本上都是动态地给一个对象添加一些额外的职责。
 
-
+### 参考
 
 https://segmentfault.com/a/1190000019276437
 

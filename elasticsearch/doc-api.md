@@ -1,4 +1,8 @@
+
+## 新建doc
+```
 #create document. 自动生成 _id
+
 POST users/_doc
 {
 	"user" : "Mike",
@@ -21,10 +25,18 @@ PUT users/_create/1
     "post_date" : "2019-05-15T14:12:12",
     "message" : "trying out Elasticsearch"
 }
+```
 
-### Get Document by ID
+## 获取文档
+```
 #Get the document by ID
 GET users/_doc/1
+
+#过滤_source
+GET twitter/_doc/0?_source=false
+
+#获取_source
+GET twitter/_source/1
 
 
 ###  Index & Update
@@ -47,17 +59,66 @@ POST users/_update/1/
         "message" : "trying out Elasticsearch"
     }
 }
+```
+## 删除文档
 
-
-
+```
 ### Delete by Id
-# 删除文档
+
 DELETE users/_doc/1
 
+### delete 查询
+POST twitter/_delete_by_query
+{
+  "query": { 
+    "match": {
+      "message": "some message"
+    }
+  }
+}
+```
+
+## 更新文档
+
+```
+#脚本更新
+PUT test/_doc/1
+{
+    "counter" : 1,
+    "tags" : ["red"]
+}
+
+POST test/_update/1
+{
+    "script" : {
+        "source": "ctx._source.counter += params.count",
+        "lang": "painless",
+        "params" : {
+            "count" : 4
+        }
+    }
+}
+
+#非脚本更新
+POST test/_update/1
+{
+    "doc" : {
+        "name" : "new_name"
+    }
+}
+#查询更新
+POST twitter/_update_by_query?conflicts=proceed
+{
+  "query": { 
+    "term": {
+      "user": "kimchy"
+    }
+  }
+}
+```
 
 ### Bulk 操作
-#执行两次，查看每次的结果
-
+```
 #执行第1次
 POST _bulk
 { "index" : { "_index" : "test", "_id" : "1" } }
@@ -78,8 +139,9 @@ POST _bulk
 { "field1" : "value3" }
 { "update" : {"_id" : "1", "_index" : "test"} }
 { "doc" : {"field2" : "value2"} }
-
-### mget 操作
+```
+### mget 操作 获取多个文档
+```
 GET /_mget
 {
     "docs" : [
@@ -110,7 +172,7 @@ GET /test/_mget
     ]
 }
 
-
+#source fileter
 GET /_mget
 {
     "docs" : [
@@ -134,6 +196,8 @@ GET /_mget
         }
     ]
 }
+
+```
 
 ### msearch 操作
 POST kibana_sample_data_ecommerce/_msearch
