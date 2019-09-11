@@ -19,9 +19,3 @@ mvn package -Dmaven.test.skip=true
 
 https://segmentfault.com/a/1190000015451706
 
-
-
-dist/*,dist/businessDetail/*,dist/icons/*,dist/_nuxt/*,dist/visual/*,
-dist/analyse/*,dist/holographic/*,dist/model/*,dist/ueditor/*,
-
-
