@@ -41,3 +41,22 @@ hello`hi`
 ---|:--:|---:
 内容|内容|内容
 内容|内容|内容
+
+## Contents
+###  List
+<details>
+<summary>View contents</summary>
+
+* [`all_equal`](#all_equal)
+* [`all_unique`](#all_unique)
+* [`bifurcate`](#bifurcate)
+* [`bifurcate_by`](#bifurcate_by)
+* [`chunk`](#chunk)
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+```py
+def longest_item(*args):
+  return max(args, key = len)
+```
