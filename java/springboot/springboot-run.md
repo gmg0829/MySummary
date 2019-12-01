@@ -13,9 +13,18 @@ nohup java -Xms500m -Xmx500m -Xmn250m -Xss256k -server -XX:+HeapDumpOnOutOfMemor
 java -jar demo-0.0.1-SNAPSHOT.jar --spring.config.location=./config/application-dev.properties
 ```
 
-
 mvn package -Dmaven.test.skip=true  
 
+start.sh
+```
+nohup java -jar xxxx-1.0.0-SNAPSHOT.jar &
+echo $! > xxxx.pid
+```
+shutdown.sh
+```
+kill -9 $(cat xxxx.pid)
+rm -f xxxx.pid
+```
 
 https://segmentfault.com/a/1190000015451706
 

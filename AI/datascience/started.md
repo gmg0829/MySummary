@@ -5,4 +5,5 @@
 - xgboost
 - lightgbm
 - catboost
-
+- featuretools
+- feature selector
