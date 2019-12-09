@@ -1,4 +1,3 @@
-
 ## GIL
 首先需要明确的一点是GIL并不是Python的特性，它是在实现Python解析器(CPython)时所引入的一个概念。CPython是大部分环境下默认的Python执行环境。
 

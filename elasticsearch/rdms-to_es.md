@@ -1,10 +1,8 @@
-# 关系数据库到es
+## 关系数据库到es
 
-## logstash-input-jdbc
-
+使用 logstash-input-jdbc
 ### 下载mysql驱动
 将驱动文件放到logstash根目录下。
-
 ### 在conf目录下配置mysqlsyn.conf
 ```
 input {
@@ -14,7 +12,7 @@ input {
         # 要使用的驱动包类，有过java开发经验的应该很熟悉这个了，不同的数据库调用的类不一样。
         jdbc_driver_class => "com.mysql.jdbc.Driver"
         # myqsl数据库的连接信息
-        jdbc_connection_string => "jdbc:mysql://192.168.43.207:3306/myapp"
+        jdbc_connection_string => "jdbc:mysql://localhost:3306/myapp"
         # mysql用户
         jdbc_user => "root"
         # mysql密码
