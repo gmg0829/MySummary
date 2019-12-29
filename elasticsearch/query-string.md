@@ -10,7 +10,6 @@ PUT /users/_doc/2
   "about":"Hadoop"
 }
 
-
 POST users/_search
 {
   "query": {

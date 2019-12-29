@@ -1,8 +1,11 @@
-## 架构图
+# Mybatis 概述
+MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。
+
+## Mybatis架构图
 ![architecture](
   ./mybatis-architecture.png)
 
-## 源码图  
+## Mybatis源码图  
 ![mybatis-source](
   ./mybatis-source.jpg)
  - annotations 注解

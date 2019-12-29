@@ -1,3 +1,6 @@
+## springboot概述
+
+Spring Boot可以轻松地创建独立的，基于生产级别的基于Spring的应用程序，简化配置，快速启动。
 
   ![springboot-source](
   ./springboot-source.png)
