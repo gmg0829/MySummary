@@ -57,7 +57,8 @@ GET _cluster/health
 
 ## 安装坑
 
-https://www.cnblogs.com/zhi-leaf/p/8484337.html```
+https://www.cnblogs.com/zhi-leaf/p/8484337.html
+```
 docker run -d --name=espn-50 -p 9200:9200 -p 9300:9300  -v /var/espn/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /var/espn/data:/usr/share/elasticsearch/data elasticsearch:5.6.9
 
 ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v5.6.9/elasticsearch-analysis-ik-5.6.9.zip

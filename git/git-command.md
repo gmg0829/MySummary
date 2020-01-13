@@ -72,6 +72,11 @@ $ git stash list
 - 恢复工作现场(恢复并从stash list删除)：
 $ git stash pop
 
+### 修改分支名字
+git branch -m oldName newName
+git push --delete origin oldName
+git push origin newName
+git branch --set-upstream-to origin/newName
 
 
 参考： https://juejin.im/post/5a4de5d8f265da432c2444b9#heading-19

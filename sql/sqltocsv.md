@@ -2,7 +2,7 @@
 
 ## oracleToCsv 带表头
 ```
-create or replace PROCEDURE SQL_TO_CSV (
+CREATE OR REPLACE PROCEDURE AMLM.SQL_TO_CSV (
   P_QUERY IN VARCHAR2,-- PLSQL文
   P_DIR IN VARCHAR2,-- 导出的文件放置目录
   P_FILENAME IN VARCHAR2 -- CSV名
@@ -92,11 +92,11 @@ LOOP
 
 UTL_FILE.PUT (
   L_OUTPUT,
-  L_SEPARATOR || '"' || TRIM (
+  L_SEPARATOR || '' || TRIM (
     BOTH ' '
     FROM
       REPLACE (L_COLUMNVALUE, '"', '""')
-  ) || '"'
+  ) || ''
 );
 
 L_SEPARATOR := ',';
@@ -125,17 +125,18 @@ WHEN OTHERS THEN
 
 
 END;
-
 ```
-
-
-
 
 create or replace directory OUT_PATH as '/home/oracle/csv_file';
 
 grant read,write on directory OUT_PATH to AMLM;
 
-EXEC sql_to_csv('','OUT_PATH','test.csv');
+select * from dba_directories;
+
+CALL sql_to_csv('select CUSTOMER_ID,CUSTOMER_NAME from T_C_CUSTOMERS','OUT_PATH','test.csv');
+
+docker cp e9c88f415772:/home/oracle/csv_file /usr/local/neo4j-community-3.5.1/import
+
 
 删除首行
 
@@ -145,7 +146,7 @@ sed -i '1d' test.csv
 ## oracleToCsv 不带表头
 
 ```
-create or replace PROCEDURE SQL_TO_CSV (
+CREATE OR REPLACE PROCEDURE AMLM.SQL_TO_CSV (
   P_QUERY IN VARCHAR2,-- PLSQL文
   P_DIR IN VARCHAR2,-- 导出的文件放置目录
   P_FILENAME IN VARCHAR2 -- CSV名
@@ -235,11 +236,11 @@ LOOP
 
 UTL_FILE.PUT (
   L_OUTPUT,
-  L_SEPARATOR || '"' || TRIM (
+  L_SEPARATOR || '' || TRIM (
     BOTH ' '
     FROM
       REPLACE (L_COLUMNVALUE, '"', '""')
-  ) || '"'
+  ) || ''
 );
 
 L_SEPARATOR := ',';
