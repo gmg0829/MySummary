@@ -26,7 +26,7 @@ JVM给了三种选择：串行收集器、并行收集器、并发收集器，�
 ```
 -XX:+UseSerialGC:设置串行收集器 
 -XX:+UseParallelGC:设置并行收集器 （此配置仅对年轻代有效）-XX:+UseParallelOldGC :设置并行年老代收集器
-
+-XX:+UseG1GC
 -XX:+UseConcMarkSweepGC:设置并发收集器(参数表示对于老年代的回收采用CMS。CMS采用的基础算法是：标记—清除。)
 ```
 垃圾回收统计信息
