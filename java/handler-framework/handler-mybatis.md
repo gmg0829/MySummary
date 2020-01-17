@@ -1,0 +1,8 @@
+configuration模块:configuration模块
+session模块:这个模块用于用户与框架交互的入口。
+Mapper映射模块：这个模块主要用来注册我们的mapper映射文件的。
+Executor执行模块：这个模块主要用于执行SQL语句并且结合各种handler处理。
+handler模块：stamentHandler用于处理语句集、parameterHandler用于处理参数、resultHandler用于处理结果映射。
+plugin模块：插件
+typeHandler模块：用于javaType到jdbcType的映射处理以及jdbcType到javaType的映射处理。
+

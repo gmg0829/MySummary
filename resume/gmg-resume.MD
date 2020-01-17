@@ -1,0 +1,80 @@
+
+# 个人信息
+
+ - 高明岗/男
+ - 本科/中北大学 软件工程
+ - 中共党员
+ - 工作年限：3年
+ - 个人博客：http://gmg0829.top/ 
+ - Github：https://github.com/gmg0829
+ - 知乎：https://www.zhihu.com/people/gmgyr
+ - 微信公众平台:分母为零
+# 联系方式
+- 手机：13716098126
+- Email：minggang0829@gmail.com
+# 证书
+软件设计师、英语四级、蓝桥杯三等奖等。
+# 技能清单
+- 语言：Java/Python/Shell
+- 框架：SpringBoot(熟练)/Mybatis/Jpa/Netty
+- 微服务：SpringCloud(熟练)、Dubbo、Grpc、对微服务生态有一定了解。
+- 数据库相关：MySQL/Redis/Mongodb/Oracle/Pg/Neo4j/TigerGraph 对数仓有一定了解。
+- 中间件：了解Mq、ES。
+- 工具：了解Git、Idea、Jupyter、Jenkins。
+- 云：Docker(熟悉)、K8s(了解)、Mesos（了解）、Service Mesh（了解）
+- Python数据分析组件：了解Numpy、Pandas组件。
+# 工作经历
+## 一览群智数据科技有限公司（2019年3月 ~ 至今）
+### 建信金科AI反洗钱
+**项目简介：** 使用人工智能技术解决建行存在的规则预警量大，报告率低，人工甄别依据少、效率低，以及报告层面上的漏报、误报等问题。重构涉毒、赌博、传销可疑规则，提升其有效性。
+
+**负责模块：** 负责样本表准备、对百亿级数据ETL、可疑案例全息画像数据统计分析跑数以及基于跑数结果的接口编写与联调。
+
+**难点：** 反洗钱业务。
+## 北京东方国信科技有限公司（2018年3月 ~ 2019年3月 ）
+### Cas Server 二次开发
+
+**项目简介：** 基于开源的Cas做二次改造，支持多种密码加密方式、替换原有的登录页面、登录页面增加验证码和密码错误次数不能超过三次功能，增加集群部署（使用Redis存储Ticket）。支持Springboot和传统项目集成方案，支持App端Rest方式接入。
+
+**负责模块：** 独立开发和改造。
+**难点：** 对接外来系统，通过Rest方式调用，只知道外来系统的密文密码，而Rest方式只支持明文密码验证。解决办法：拓展字段，增加一个标识，重写认证类，增加逻辑判断。
+### 任务管理（工作流）
+**项目简介：** 该项目使用Activi、Cas、Springboot等技术栈。
+
+**负责模块：** 负责下发任务、审批模块开发。
+## 北京北控国彩科技有限公司（2016年12月 ~ 2018年3月 ）
+
+### 自助机管理平台
+**项目简介：** 该项目使用Bootstrap、Springboot、SpringCloud等技术栈，供商户、运营人员使用。渠道管理模块集成了百度地图，支持模糊搜索和点击地图功能，提高了定位的精准度。
+**负责模块:** 负责权限管理、商品管理、渠道管理和退款模块的开发。
+**收获：** 对百度地图Api有一定了解。
+### 北控国彩资金管理平台     
+**项目简介：** 前端使用LayUI、Echarts、Freemarker；后端使用Springboot、SpringCloud、Shiro、任务调度。供财务、结算员、运营、经理使用。发福包模块分为等级福包、随机福包、和推广福包，涉及到一些小算法。
+**负责模块:** 负责项目技术选型以及框架搭建。负责账户中心、订单管理、兑奖管理、发福包和权限管理模块开发。
+**收获：**  熟悉Shiro权限管理框架和表结构的设计。参与发福包情景的设计。
+### 商户小程序
+
+**负责模块:** 负责商户进彩、统计各种彩票的剩余数量、彩票周销售小程序接口开发。
+
+### 福包夺宝小游戏
+**项目简介：**  基本功能： 支付5元夺宝一次，夺宝一次幸运值加1， 奖品有奖金翻倍卡(兑奖翻倍)、打折卡(购买彩票)、实物(邮寄)、福包(购买彩票)。
+**负责模块:** 负责提供福包APP奖金翻倍卡、打折卡、实物配送、夺得福宝等奖项接口开发。
+
+### 年会大屏幕
+**项目简介：** 基本功能：实时滚动现场1000人领福宝和彩票兑奖的弹幕，实时统计领福宝和彩票兑奖top5榜单。
+**负责模块:** 负责前端开发。使用网格布局、SpringCloud、Websocket等技术。
+# 开源项目和作品
+## 开源项目
+  - [SpringCloud教程](https://github.com/gmg0829/SpringcloudLearningExample)：实战SpringCloud，集成Docker，实现服务编排。
+  - [Spingboot教程](https://github.com/gmg0829/SpringbootLearningExample)：实战Springboot，核心模块：集成RabbitMq、RokcetMq、Kafaka实现了数据同步。
+  - [Grpc实战](https://github.com/gmg0829/GrpcLearningExample)：实现了服务与服务之前的服务调用。
+  - [Dubbo实战](https://github.com/gmg0829/DubboLearningExample)：Dubbo集成Springboot实现服务调用。
+ - [Python基础教程](https://github.com/gmg0829/python-BasicLearningExample)：Python的基础实战。
+  - [ES实战](https://github.com/gmg0829/esLearning)：ES实战。
+# 自我评价
+- 具有较强的团队合作精神，有强烈的责任心和事业心；
+- 有良好的学习归纳总结能力、逻辑思维能力，面对困难有很好的分析问题与解决问题的能力；
+- 为人比较谦虚，上进心比较强，并喜欢钻研新的技术不断提高自身的能力与综合素质
+# 致谢
+感谢您花时间阅读我的简历，期待能有机会和您共事。
+      
