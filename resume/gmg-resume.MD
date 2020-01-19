@@ -16,7 +16,7 @@
 软件设计师、英语四级、蓝桥杯三等奖等。
 # 技能清单
 - 语言：Java/Python/Shell
-- 框架：SpringBoot(熟练)/Mybatis/Jpa/Netty
+- 基础框架：SpringBoot(熟练)/Mybatis/Jpa/Netty/Jwt/Shiro
 - 微服务：SpringCloud(熟练)、Dubbo、Grpc、对微服务生态有一定了解。
 - 数据库相关：MySQL/Redis/Mongodb/Oracle/Pg/Neo4j/TigerGraph 对数仓有一定了解。
 - 中间件：了解Mq、ES。

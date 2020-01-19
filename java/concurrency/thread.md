@@ -41,7 +41,109 @@ interrupted() 方法 不止可以判断当前线程是否已经中断，而且�
 
 join方法本身是通过wait方法来实现等待的，这里判断如果线程还在运行中的话，则继续等待，如果指定时间到了，或者线程运行完成了，则代码继续向下执行，调用线程就可以执行后面的逻辑了。
 
+## 线程状态
+```
+public
+ 
+enum
+ 
+State
+ 
+{
+
+    
+/**
+
+     * 新建状态，线程还未开始
+
+     */
+
+    NEW
+,
 
 
+
+    
+/**
+
+     * 可运行状态，正在运行或者在等待系统资源，比如CPU
+
+     */
+
+    RUNNABLE
+,
+
+
+
+    
+/**
+
+     * 阻塞状态，在等待一个监视器锁（也就是我们常说的synchronized）
+
+     * 或者在调用了Object.wait()方法且被notify()之后也会进入BLOCKED状态
+
+     */
+
+    BLOCKED
+,
+
+
+
+    
+/**
+
+     * 等待状态，在调用了以下方法后进入此状态
+
+     * 1. Object.wait()无超时的方法后且未被notify()前，如果被notify()了会进入BLOCKED状态
+
+     * 2. Thread.join()无超时的方法后
+
+     * 3. LockSupport.park()无超时的方法后
+
+     */
+
+    WAITING
+,
+
+
+
+    
+/**
+
+     * 超时等待状态，在调用了以下方法后会进入超时等待状态
+
+     * 1. Thread.sleep()方法后【本文由公从号“彤哥读源码”原创】
+
+     * 2. Object.wait(timeout)方法后且未到超时时间前，如果达到超时了或被notify()了会进入BLOCKED状态
+
+     * 3. Thread.join(timeout)方法后
+
+     * 4. LockSupport.parkNanos(nanos)方法后
+
+     * 5. LockSupport.parkUntil(deadline)方法后
+
+     */
+
+    TIMED_WAITING
+,
+
+
+
+    
+/**
+
+     * 终止状态，线程已经执行完毕
+
+     */
+
+    TERMINATED
+;
+
+}
+```
+![](
+  ./thread-state.png)
+
+https://juejin.im/post/5a72d4bd518825735300f37b
 
 
