@@ -1,0 +1,2 @@
+AtomicInteger是java并发包下面提供的原子类，主要操作的是int类型的整型，通过调用底层Unsafe的CAS等方法实现原子操作。
+

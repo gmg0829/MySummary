@@ -11,9 +11,13 @@ ListableBeanFactory接口表示这些Bean是可列表的，而 HierarchicalBeanF
 - 2.访问资源。(实现 ResourcePatternResolver 接口)
 - 3.支持应用事件。(实现 ApplicationEventPublisher 接口)
 
+
+
 ## BeanDefinition
 
-SpringIOC 容器管理了我们定义的各种 Bean 对象及其相互的关系，Bean 对象在 Spring 实现中是以 BeanDefinition来描述的
+在这些Spring提供的基本IoC容器的接口定义和实现的基础上，Spring通过定义BeanDefinition来管理基于Spring的应用中的各种对象以及它们之间的相互依赖关系。
 
-  ![bean-digram](
+BeanDefinition 中保存了我们的 Bean 信息，比如这个 Bean 指向的是哪个类、是否是单例的、是否懒加载、这个 Bean 依赖了哪些 Bean 等等。
+
+![bean-digram](
   ./bean-digram.jpg)
