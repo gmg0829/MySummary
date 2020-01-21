@@ -4,7 +4,7 @@
  - 高明岗/男
  - 本科/中北大学 软件工程
  - 中共党员
- - 工作年限：3年
+ - 工作年限：3.5年
  - 个人博客：http://gmg0829.top/ 
  - Github：https://github.com/gmg0829
  - 知乎：https://www.zhihu.com/people/gmgyr
