@@ -30,6 +30,3 @@ https://www.cnblogs.com/pinard/p/9220199.html
 
 https://zhuanlan.zhihu.com/p/30378213
 
-1、 调研PMML，github提供了一些模型文件(支持sklearn、xgboost、lgb、sparkml)转为pmml和Java载入pmml的library。
-2、 实战做了个小demo,github链接为(http://gitlab.corp.elensdata.com/AML/pmml_example)。
-3、 对于复杂大规模的集成学习模型，生成的PMML文件比较大，这时使用PMML文件加载预测速度会非常慢。

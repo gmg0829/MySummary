@@ -179,6 +179,8 @@ ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, Ti
 ThreadPoolExecutor有四个构造方法，其中前三个最终都是调用最后一个，它有7个参数，分别为corePoolSize、maximumPoolSize、keepAliveTime、unit、workQueue、threadFactory、handler。
 ### 拒绝策略
 #### JDK内置4种线程池拒绝策略
+ThreadPoolExecutor.*   RejectedExecutionHandler
+
 CallerRunsPolicy（调用者运行策略）
 
 AbortPolicy（中止策略）当触发拒绝策略时，直接抛出拒绝执行的异常，中止策略的意思也就是打断当前执行流程

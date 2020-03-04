@@ -141,8 +141,9 @@ State
 
 }
 ```
+
 ![](
-  ./thread-state.png)
+  ./thread-state.jpg)
 
 https://juejin.im/post/5a72d4bd518825735300f37b
 
