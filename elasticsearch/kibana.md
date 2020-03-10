@@ -14,7 +14,8 @@ https://dongkelun.com/2019/07/03/elkbConf/
 
 ### 插件
 
-```bin/kibana-plugin list
+```
+bin/kibana-plugin list
 bin/kibana-plugin install
 bin/kibana-plugin remove
 ```
