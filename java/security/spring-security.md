@@ -1,3 +1,9 @@
+## 简介
+Spring Security是一个功能强大、高度可定制的身份验证和访问控制框架。它实际上是保护基于Spring的应用程序的标准。
+
+Spring Security是一个专注于为Java应用程序提供身份验证和授权的框架。与所有Spring项目一样，Spring安全的真正威力在于它可以很容易地被扩展以满足定制需求。
+
+
 ## SpringSecurity 过滤器链
 SpringSecurity 采用的是责任链的设计模式，它有一条很长的过滤器链。现在对这条过滤器链的各个进行说明:
 
@@ -59,8 +65,16 @@ UserDetails是Spring Security中一个核心的接口。其中定义了一些可
 
 ### GrantedAuthority
 Authentication的getAuthorities()可以返回当前Authentication对象拥有的权限，即当前用户拥有的权限。
+## Spring Security OAuth2
+Spring Security OAuth2 建立在 Spring Security Core 和 Spring Security Web 的基础上，提供了对 OAuth2 授权框架的支持。
+
+## Spring Security JWT
+
+Spring Security JWT 在 Spring Security OAuth2 中便扮演了 TokenService 和 TokenStore 的角色，用于生成和效验 Token。
 
 
+## 参考链接
 
+http://www.iocoder.cn/Spring-Security/laoxu/Architecture-Overview/
 
-
+https://www.cnblogs.com/rgbit/p/11784371.html

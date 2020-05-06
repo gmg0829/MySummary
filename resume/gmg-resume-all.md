@@ -16,7 +16,7 @@
 # 技能清单
 - 语言：Java/Python/Shell 对前后端生态有一定了解。
 - 基础框架：SpringBoot(熟练)/Mybatis/Jpa/Netty/Jwt/Shiro/OAuth。
-- 微服务：SpringCloud(熟练)、Dubbo、Grpc、对微服务生态有一定了解。
+- 微服务：SpringCloud(熟练)、Spring Cloud Alibaba、Dubbo、Grpc、对微服务生态有一定了解。
 - 大数据：了解Hdfs、Spark，ES、Flink。对大数据生态有一定了解。
 - 数据库相关：MySQL/Redis/Mongodb/Oracle/Pg/Neo4j/TigerGraph 对数仓有一定了解。
 - 工具：了解Git、Idea、Jupyter Hub、Jenkins。
