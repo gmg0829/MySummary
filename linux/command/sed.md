@@ -1,4 +1,7 @@
 ## sed
+
+编辑命令
+
 使用sed删除输出结果某些行
 ```
 nl zcwyou.txt | sed '3,7d'
