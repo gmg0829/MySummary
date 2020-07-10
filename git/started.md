@@ -19,7 +19,7 @@ ssh-keygen -t rsa -C "你公司的gitlab帐号邮箱" -f ~/.ssh/gitlab
 Host github.com
  HostName github.com
  User git
- IdentityFile C:/Users/gmg/.ssh/id_rsa
+ IdentityFile C:/Users/gmg/.ssh/github
 
 Host company
  HostName gitlab.xx.com
