@@ -229,12 +229,9 @@ jmap -heap 3113(打印heap的概要信息，GC使用的算法，heap的配置)
 jmap -histo:live 3113 | more
 
 
-
-
-
-
-
-
+## JConsole
+## JVisualVM
+## JMC
 
 
 

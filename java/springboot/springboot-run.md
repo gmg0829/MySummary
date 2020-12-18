@@ -15,16 +15,27 @@ java -jar demo-0.0.1-SNAPSHOT.jar --spring.config.location=./config/application-
 
 mvn package -Dmaven.test.skip=true  
 
+## 启动
 start.sh
 ```
 nohup java -jar xxxx-1.0.0-SNAPSHOT.jar &
 echo $! > xxxx.pid
 ```
+## 停止
 shutdown.sh
 ```
 kill -9 $(cat xxxx.pid)
 rm -f xxxx.pid
 ```
+
+```
+java -jar -Dloader.path=lib  xxxApp.jar
+java -jar -Dloader.path=lib,templates,static  xxxApp.jar
+```
+
+##  assembly.xml 打包
+
+
 
 https://segmentfault.com/a/1190000015451706
 

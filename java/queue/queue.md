@@ -37,3 +37,5 @@ PriorityBlockingQueue是一个没有边界的队列，它的排序规则和 java
 
 SynchronousQueue队列内部仅允许容纳一个元素。当一个线程插入一个元素后会被阻塞，除非这个元素被另一个线程消费
 
+
+https://cloud.tencent.com/developer/article/1636024

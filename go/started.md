@@ -20,3 +20,23 @@ go  get github.com/jinzhu/gorm
 gopm  get github.com/gin-gonic/gin
 ```
 
+#### go module 使用介绍
+GO111MODULE=on启用模块支持，编译时会忽略GOPATH和vendor文件夹，只根据 go.mod下载依赖，将依赖下载至%GOPATH%/pkg/mod/ 目录下
+
+
+go mod init <your module path>
+go build
+go list -m all
+go mod download
+go get -u  升级版本
+go mod tiny 清除不需要的依赖
+go mod vendor mod生成vendor目录
+go mod graph 打印模块依赖图
+go mod edit -require=golang.org/x/text 添加依赖项
+go mod edit -droprequire=golang.org/x/text 移除依赖项
+
+## 常用包
+https://github.com/jobbole/awesome-go-cn
+
+https://golang.org/pkg/
+

@@ -62,6 +62,8 @@
 其中consumer.properties的group.id=消费的组，
 exclude.internal.topics=false
 
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topicName --from-beginning
+
 15.kafka自带压测命令
 
 ./kafka-producer-perf-test.sh --topic test5 --num-records 100000 --record-size 1 --throughput 100  --producer-props bootstrap.servers=hbp001:9092
@@ -76,3 +78,11 @@ bin/kafka-server-start.sh config/server.properties &
 18、停止kafka服务
 
 ./kafka-server-stop.sh 
+
+18 消费者组
+
+bin/kafka-consumer-groups.sh --bootstrap-server 127.0.0.1:9092 --list
+./kafka-consumer-groups.sh --bootstrap-server 10.3.70.109:9092 --describe --group test_group2
+
+
+
