@@ -52,3 +52,7 @@ nc -L -p 9000
 http://192.168.1.177:8081/v1/jobs/78dd81804d9342ea41871564cf9dc6b5
 
 http://192.168.1.177:8081/v1/jobs/78dd81804d9342ea41871564cf9dc6b5/vertices/cbc357ccb763df2852fee8c4fc7d55f2/subtasks/metrics?get=numRecordsOutPerSecond,numBytesOutPerSecond
+
+
+
+https://www.jianshu.com/p/d5ccb3aaabc5

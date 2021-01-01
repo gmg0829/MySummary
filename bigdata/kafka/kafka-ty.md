@@ -45,10 +45,10 @@ replica.fetch.wait.max.ms
 ## 分区数量配置
 num.partitions=5
 
-# 参数调优
+## 参数调优
 吞吐量优先、延时优先、可靠性优先以及可用性优先。
 
-## Producer优化
+### Producer优化
 - batch.size 设置每次批量提交消息的最大字节数，一旦待批量发送的消息的大小超过这个字节数，这些消息将被批量发送出去
 - linger.ms 该参数会影响延时，因为消息不是立即发送的，而是需要等待发送的消息大小超过batch.size或者收集消息的等待时间超过linger.ms才会发送消息
 - compression.type 将待发送的多个消息压缩成一个消息，因此和batch.size一起使用，batch.size越大，压缩率越高，吞吐量越大。支持3种压缩类型：lz4、snappy和gzip。[lz4能使吞吐量最优][1]
@@ -58,7 +58,7 @@ num.partitions=5
 - max.request.size  定义每条消息的最大字节数。
 - request.timeout.ms 客户端等待请求的最大响应时间；如果设置了重试次数，超过这个时间，客户端将会重试。
 
-## Consumer优化
+### Consumer优化
 - fetch.min.bytes 定义从broker获取消息的最小字节数。只有大于这个值时，consumer才会拉取到消息，否则会等待到超时。这个值越大，从broker获取消息的次数越少，会减轻broker的CPU压力；但会影响延时
 - fetch.max.wait.ms	 	达到fetch.min.bytes或者超过fetch.max.wait.ms时，才会消费消息
 - auto.commit.enable  通过显式调用commitSync()或者commitAsync()手动确认消息被消费。消费者是通过更新offsets来表明offsets之前的消息已经被消费了；当消费者的poll()执行完时，会自动commit offsets。但是如果poll作为业务事务中的一部分的时候，为了保证可靠性，必须在事务提交之后才能提交offsets，所以需要将auto.commit.enable=false，并且显示地调用commitSync() or commitAsync()

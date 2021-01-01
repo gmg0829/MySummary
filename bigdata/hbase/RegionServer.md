@@ -1,0 +1,10 @@
+# Hbase之RegionServer
+RegionServer是HBase系统中最核心的组件，主要负责用户数据写入、读取等基础操作。RegionServer组件实际上是一个综合体系，包含多个各司其职的核心模块：HLog、MemStore、HFile以及BlockCache。
+
+![啡海报](
+  ./regionserver.png)
+
+
+  一个RegionServer由一个（或多个）HLog、一个BlockCache以及多个Region组成。其中，HLog用来保证数据写入的可靠性；BlockCache可以将数据块缓存在内存中以提升数据读取性能；Region是HBase中数据表的一个数据分片，一个RegionServer上通常会负责多个Region的数据读写。一个Region由多个Store组成，每个Store存放对应列簇的数据，比如一个表中有两个列簇，这个表的所有Region就都会包含两个Store。每个Store包含一个MemStore和多个HFile，用户数据写入时会将对应列簇数据写入相应的MemStore，一旦写入数据的内存大小超过设定阈值，系统就会将MemStore中的数据落盘形成HFile文件。HFile存放在HDFS上，是一种定制化格式的数据存储文件，方便用户进行数据读取。
+
+## HLog
