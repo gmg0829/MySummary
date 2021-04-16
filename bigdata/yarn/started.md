@@ -1,0 +1,23 @@
+
+YARN服务由ResourceManager和NodeManager两类进程组成，Container是YARN的资源表示模型，任何类型的计算类型的作业都可以运行在Container中，ApplicationMaster就是YARN的二级调度器，它也运行在Container中。
+
+## ResourceManager
+ResourceManagers，顾名思义，是集群中所有资源的管理者，负责集群中所有资源管理和调度，在双层调度器范型中，属于中央调度器。它定期会接收各个NodeManager的资源汇报信息，并进行汇总，并根据资源使用情况，将资源分配给各个应用的二级调度器（ApplicationMaster）。
+
+## NodeManager
+NodeManager是YARN集群中单个节点的代理，它管理YARN集群中的单个计算节点，它负责保持与ResourceManager的同步，跟踪节点的健康状况，管理各个Container的生命周期，监控每个Container的资源使用情况，管理分布式缓存，管理各个Container生成的日志，提供不同YARN应用可能需要的辅助服务。
+
+## ApplicationMaster
+ApplicationMaster是协调集群中应用程序的进程，每个应用程序都有自己专属的ApplicationMaster，不同的计算框架的ApplicationMaster的实现也是不同的，它负责向ResourceManager申请资源，在对应的NodeManager上启动Container来执行任务，并在应用中不断地监控这些Container的状态。
+
+## Yarn工作流程
+- 第1步：客户端向ResourceManager提交自己的应用。
+- 第2步：ResourceManager向NodeManager发出指令，为该应用启动第一个Container，并在其中启动ApplicationMaster。
+- 第3步：ApplicationMaster向ResourceManager注册。
+- 第4步：ApplicationMaster采用轮询的方式向ResourceManager的YARN Scheduler申领资源。
+- 第5步：当ApplicationMaster申领到资源后（其实是获取到了空闲节点的信息），便会与对应的NodeManager通信，请求启动计算任务。
+- 第6步：NodeManager根据资源量大小、所需的运行环境，在Container中启动任务。
+- 第7步：各个任务向ApplicationMaster汇报自己的状态和进度，以便ApplicationMaster掌握各个任务的执行情况。
+- 第8步：应用程序运行完成后，ApplicationMaster向ResourceManager注销并关闭自己。
+
+

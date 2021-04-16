@@ -8,3 +8,19 @@ RegionServer是HBase系统中最核心的组件，主要负责用户数据写入
   一个RegionServer由一个（或多个）HLog、一个BlockCache以及多个Region组成。其中，HLog用来保证数据写入的可靠性；BlockCache可以将数据块缓存在内存中以提升数据读取性能；Region是HBase中数据表的一个数据分片，一个RegionServer上通常会负责多个Region的数据读写。一个Region由多个Store组成，每个Store存放对应列簇的数据，比如一个表中有两个列簇，这个表的所有Region就都会包含两个Store。每个Store包含一个MemStore和多个HFile，用户数据写入时会将对应列簇数据写入相应的MemStore，一旦写入数据的内存大小超过设定阈值，系统就会将MemStore中的数据落盘形成HFile文件。HFile存放在HDFS上，是一种定制化格式的数据存储文件，方便用户进行数据读取。
 
 ## HLog
+HBase中系统故障恢复以及主从复制都基于HLog实现。默认情况下，所有写入操作（写入、更新以及删除）的数据都先以追加形式写入HLog，再写入MemStore。大多数情况下，HLog并不会被读取，但如果RegionServer在某些异常情况下发生宕机，此时已经写入MemStore中但尚未f lush到磁盘的数据就会丢失，需要回放HLog补救丢失的数据。
+
+
+## MemStore
+
+HBase系统中一张表会被水平切分成多个Region，每个Region负责自己区域的数据读写请求。水平切分意味着每个Region会包含所有的列簇数据，HBase将不同列簇的数据存储在不同的Store中，每个Store由一个MemStore和一系列HFile组成。HBase基于LSM树模型实现，所有的数据写入操作首先会顺序写入日志HLog，再写入MemStore，当MemStore中数据大小超过阈值之后再将这些数据批量写入磁盘，生成一个新的HFile文件。
+
+
+##  HFile
+
+MemStore中数据落盘之后会形成一个文件写入HDFS，这个文件称为HFile。
+
+## BlockCache
+HBase也实现了一种读缓存结构——BlockCache。客户端读取某个Block，首先会检查该Block是否存在于Block Cache，如果存在就直接加载出来，如果不存在则去HFile文件中加载，加载出来之后放到Block Cache中，后续同一请求或者邻近数据查找请求可以直接从内存中获取，以避免昂贵的IO操作。
+
+BlockCache是RegionServer级别的，一个RegionServer只有一个BlockCache。

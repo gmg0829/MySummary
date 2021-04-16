@@ -1,0 +1,6 @@
+- trace 
+- jad
+- monitor
+- watch
+
+
