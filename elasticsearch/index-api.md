@@ -78,5 +78,9 @@ GET /_cat/indices/kibana*?pri&v&h=health,index,pri,rep,docs.count,mt
 GET /_cat/indices?v&h=i,tm&s=tm:desc
 ```
 
+
+http://www.shixinke.com/elasticsearch/index-settings-parameters
+
+
 参考 
 https://www.elastic.co/guide/en/elasticsearch/reference/7.1/indices-create-index.html

@@ -228,6 +228,15 @@ jmap -heap 3113(打印heap的概要信息，GC使用的算法，heap的配置)
 ### 打印堆的对象统计，包括对象数、内存大小等等
 jmap -histo:live 3113 | more
 
+## jstack
+jstack -l 28367
+统计线程数
+/opt/java8/bin/jstack
+jstack -l 28367 | grep 'java.lang.Thread.State' | wc -l
+查看cpu占用高线程
+top -H -p 17850
+printf "%x\n" 17880   
+jstack 17850|grep 45d8 -A 30
 
 ## JConsole
 ## JVisualVM

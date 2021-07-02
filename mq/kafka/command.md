@@ -52,9 +52,10 @@
 
 ./kafka-consumer-groups.sh --new-consumer --describe --group test6 --bootstrap-server hbp201:9092
 
-13.显示消费者
+13.显示消费者组
 
-./kafka-consumer-groups.sh --bootstrap-server hdh56:9092,hdh57:9092,hdh58:9092 --list --new-consume
+./kafka-consumer-groups.sh --bootstrap-server hdh56:9092,hdh57:9092,hdh58:9092  --group frms --describe
+./kafka-consumer-groups.sh --bootstrap-server hdh56:9092,hdh57:9092,hdh58:9092 --list
 
 14.消费的topic查看
 
@@ -63,6 +64,7 @@
 exclude.internal.topics=false
 
 bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topicName --from-beginning
+
 
 15.kafka自带压测命令
 
@@ -75,9 +77,7 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topicNam
 17、启动kafka服务
 
 bin/kafka-server-start.sh config/server.properties &
-18、停止kafka服务
-
-./kafka-server-stop.sh 
+1
 
 18 消费者组
 
@@ -85,4 +85,7 @@ bin/kafka-consumer-groups.sh --bootstrap-server 127.0.0.1:9092 --list
 ./kafka-consumer-groups.sh --bootstrap-server 10.3.70.109:9092 --describe --group test_group2
 
 
+
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --reset-offsets --group consumergroup1 --topic topic1 --to-latest
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic my-topic --partitions 1 --replication-factor 1 
 

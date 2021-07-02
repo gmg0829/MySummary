@@ -23,3 +23,6 @@ grant insert table to zhangsan;//插入表的权限
 grant update table to zhangsan;//修改表的权限
 grant all to public;//这条比较重要，授予所有权限(all)给所有用户(public)
 
+exp iafp/iafp_sdm@10.224.32.12:1521/ora12c owner=iafp file=/iafp/gmg/sdm.dmp
+imp iafp/iafp_sdm@10.224.32.12:1521/ora12c owner=iafp file=/iafp/gmg/sdm.dmp full=y ignore=y
+
