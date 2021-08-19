@@ -21,3 +21,4 @@ ApplicationMaster是协调集群中应用程序的进程，每个应用程序都
 - 第8步：应用程序运行完成后，ApplicationMaster向ResourceManager注销并关闭自己。
 
 
+https://matt33.com/2018/09/01/yarn-architecture-learn/

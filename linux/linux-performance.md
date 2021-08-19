@@ -31,3 +31,9 @@
   ![network-table](
   ./img/network-table.png)
 
+https://juejin.cn/post/6844904127231688717
+
+https://xiaozhazi.github.io/tags/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E6%88%98/
+
+https://www.cnblogs.com/luoahong/category/1378306.html?page=4
+

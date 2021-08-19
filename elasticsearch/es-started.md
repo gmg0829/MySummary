@@ -5,3 +5,6 @@
 - Logstash 是动态数据收集管道，拥有可扩展的插件生态系统，能够与 Elasticsearch 产生强大的协同作用。
 - Beats 是轻量型采集器的平台，从边缘机器向 Logstash 和 Elasticsearch 发送数据。
 
+term  match 
+keyword text
+

@@ -1,0 +1,47 @@
+## 表结构
+https://blog.csdn.net/qq_35550113/article/details/117303931
+
+1.ProcessEngine 
+ 在Activiti中最核心的类，其他的类都是由他而来。
+
+2.RepositoryService
+是Activiti的仓库服务类。所谓的仓库指流程定义文档的两个文件：bpmn文件和流程图片。
+
+3.RuntimeService
+是activiti的流程执行服务类。可以从这个服务类中获取很多关于流程执行相关的信息。
+
+4.TaskService
+是activiti的任务服务类。可以从这个类中获取任务的信息。
+
+5.HistoryService
+是activiti的查询历史信息的类。在一个流程执行完成后，这个对象为我们提供查询历史信息。
+
+6.ProcessDefinition
+流程定义类。可以从这里获得资源文件等。
+
+7.ProcessInstance
+代表流程定义的执行实例。如范冰冰请了一天的假，她就必须发出一个流程实例的申请。一个流程实例包括了所有的运行节点。我们可以利用这个对象来了解当前流程实例的进度等信息。流程实例就表示一个流程从开始到结束的最大的流程分支，即一个流程中流程实例只有一个。
+
+8.Execution
+Activiti用这个对象去描述流程执行的每一个节点。在没有并发的情况下，Execution就是同ProcessInstance。流程按照流程定义的规则执行一次的过程，就可以表示执行对象Execution。
+
+9 FormService
+
+工作流的设计思路之一就是将每个节点需要显示的数据直接绑定到此节点。而formService就是专门为此服务的，使用formService可以获取某个节点绑定的表单数据。当然，如果没有表单绑定到此节点，此服务就没有任何用处。
+
+10 IdentityService
+
+activiti自带的用于管理自身的组织机构的服务。activiti自身的组织机构包括user和group两大类，而user、group以及user和group的关系都是通过自服务来维护的。因此如果需要使用activiti自身的组织机构的，就会使用到此服务。不过通常情况下我们都是是用的框架中的身份认证和组织机构，所以此服务使用频率也不高。
+
+11 Execution
+Execution这个概念一开始比较难以理解。在activiti中，如果没有分支，那么整个流程走下来就是一个Execution。如果有分支，则会存在多个Execution，我的理解是，Execution就是一小块执行的路径。比如分支1走的路径和分支2走的路径。
+
+12 BpmnModel
+BpmnModel其实就是bpmn文件通过xml解析后得到的流程定义模型对象，这个对象里记录了流程定义的所有内容，可以得到每个节点和每个节点的入线和出线信息。
+
+13 FlowNode
+FlowNode即节点的父类，在activiti里节点分为三类，分别是Event(事件)，Task(任务)，Gateway(网关)。比如开始节点和结束节点就是start event和end event。而任务和网关好理解，就不多说了。简而言之，FlowNode是所有的节点的抽象。这个对象里可以取得节点的基本信息，还包括该节点从哪个节点过来（入线信息IncomingFlows），到哪个节点去（出线信息OutgoingFlows）。
+
+14 SequenceFlow
+SequenceFlow就是流程图的线的相关信息，定义一根线，必须要知道是从哪个节点通过这根线到哪个节点，即源节点到目标节点的信息，而SequenceFlow这个对象可以取到这些信息。而上面提到的IncomingFlows和OutgoingFlows都属于SequenceFlow。
+
