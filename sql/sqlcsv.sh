@@ -21,3 +21,14 @@ spool $filename;
 select buss_no||','||card_no||','||sign_no from alipay_sign where buss_no=$buss_no_cur;
 spool off;
 EOF
+
+
+
+@/home/iafp/gmg/abc.sql
+sqlplus iafp_nf/nf_mgr@10.225.132.252:1521/ora12c
+
+# 导入数据
+https://www.huaweicloud.com/articles/8aed6aaf8f097b7fa6e13f36309dd47c.html
+
+
+

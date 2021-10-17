@@ -42,3 +42,7 @@ Dubbo 是一款高性能、轻量级的开源Java RPC框架，它提供了三大
   - dubbo-metadata 元数据模块，支持 consul、etcd、nacos、redis、zookeeper 这五种组件。
   - dubbo-serialization 序列化模块。
   
+
+  https://segmentfault.com/u/crazyhzm###
+
+  

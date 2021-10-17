@@ -37,8 +37,23 @@ JVM给了三种选择：串行收集器、并行收集器、并发收集器，�
 -XX:-TraceClassLoading 跟踪类的加载信息
 -XX:-PrintCompilation 当一个方法被编译时打印相关信息    
 -XX:-HeapDumpOnOutOfMemoryError	 当首次遭遇OOM时导出此时堆中相关信息
+-XX:+HeapDumpBeforeFullGC 实现在Full GC前dump。
+-XX:+HeapDumpAfterFullGC 实现在Full GC后dump。
 -XX:HeapDumpPath=./java_pid<pid>.hprof	指定导出堆信息时的路径或文件名
 ```
+
+-Xms200m -Xmx200m -Xmn50m -XX:PermSize=30m -XX:+HeapDumpBeforeFullGC -XX:+HeapDumpAfterFullGC -XX:HeapDumpPath=e:\dump
+
+使用时间戳命名文件
+-XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:/path/to/gc-%t.log
+
+
+-XX:+UseParNewGC -XX:+UseConcMarkSweepGC -Xms10m -Xmx10m -XX:+PrintGCDetails -Xloggc:gc_dandan.log -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=./
+
+第一，哪些对象占用大量内存。
+第二，对象被谁引用。（就是要知道为什么它无法释放的意思）
+第三，定位到具体哪行代码，进行分析问题
+
 
 ## 常用的JVM调优方案
 
