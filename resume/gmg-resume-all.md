@@ -17,9 +17,9 @@
 - 基础框架：SpringBoot/Mybatis/Netty/Spring Security。
 - 微服务：SpringCloud、Spring Cloud Alibaba、Dubbo、Grpc。
 - 大数据：了解Hbase、Spark，ES、Flink。
-- 数据库相关：MySQL/Redis/Mongodb/Oracle/Pg/Neo4j/Janusgraph。
+- 数据库相关：MySQL/Redis/Mongodb/Oracle/PostgreSQL/Neo4j/Janusgraph。
 - 云原生：Docker、K8s。
-- AI建模：了解numpy、panda、feauretools组件，对AI建模流程有一定了解。
+- AI建模：了解numpy、pandas、feauretools组件，对AI建模流程有一定了解。
 - 业务知识：反欺诈、反洗钱。
 # 工作经历
 ##  邦盛科技（2020年7月 ~ 至今）
