@@ -59,4 +59,7 @@ JdbcTemplate
 DriverManagerDataSource
 
 
+DefaultSingletonBeanRegistry
+
+
 

@@ -34,5 +34,18 @@ ListState
 
 PatternStream
 
+CheckpointCoordinator
+
+CheckpointBarrier
+
+AssignerWithPeriodicWatermarks
+
+AssignerWithPunctuatedWatermarks
+
+TypeInformation
+
+StateBackend
+
+
 
 
