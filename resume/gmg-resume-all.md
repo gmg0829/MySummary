@@ -13,13 +13,13 @@
 # 证书
 软件设计师、英语四级、计算机等级证书、蓝桥杯三等奖等。
 # 技能清单
-- 语言：熟练使用Java,对Vue、Python、Goland有一定了解。
+- 语言：精通Java,了解Shell、Vue、Python、Goland。
 - 基础框架：SpringBoot/Mybatis/Netty/Spring Security。
 - 微服务：SpringCloud、Spring Cloud Alibaba、Dubbo、Grpc。
 - 大数据：了解Hbase、Spark，ES、Flink。
 - 数据库相关：MySQL/Redis/Mongodb/Oracle/PostgreSQL/Neo4j/Janusgraph。
 - 云原生：Docker、K8s。
-- AI建模：了解numpy、pandas、feauretools组件，对AI建模流程有一定了解。
+- AI建模：了解numpy、pandas、feauretools组件，了解AI建模流程。
 - 业务知识：反欺诈、反洗钱。
 # 工作经历
 ##  邦盛科技（2020年7月 ~ 至今）
