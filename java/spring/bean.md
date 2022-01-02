@@ -21,3 +21,7 @@ BeanDefinition 中保存了我们的 Bean 信息，比如这个 Bean 指向的�
 
 ![bean-digram](
   ./bean-digram.jpg)
+
+
+https://juejin.cn/post/6844904065457979405
+
