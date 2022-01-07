@@ -115,6 +115,24 @@ CREATE TABLE country (\n" +
           'table-name' = 'demo_orders');
 ```
 
+```
+ CREATE TABLE `demoProducts` (
+          `product_id` INTEGER,
+          `product_name` STRING,
+          `price` DECIMAL(10, 4),
+          `currency` STRING,
+           update_time TIMESTAMP(3) METADATA FROM 'value.source.timestamp' VIRTUAL,
+          PRIMARY KEY(product_id) NOT ENFORCED,
+          WATERMARK FOR update_time AS update_time
+        ) WITH (
+          'connector' = 'kafka',
+           'topic' = 'dbserver1.inventory.demo_products',
+           'properties.bootstrap.servers' = 'localhost:9092',
+           'scan.startup.mode' = 'earliest-offset',
+           'format' = 'debezium-json',
+           'debezium-json.schema-include' = 'true');
+```
+
 
 
 ## UDF
