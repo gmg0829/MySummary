@@ -198,3 +198,9 @@ DiscardOldestPolicy（弃老策略）如果线程池未关闭，就弹出队列�
 - shutdown() 执行后停止接受新任务，会把队列的任务执行完毕。
 - shutdownNow() 也是停止接受新任务，但会中断所有的任务，将线程池状态变为 stop。
 
+
+CompletableFuture
+FutureTask 
+
+
+https://pdai.tech/md/java/thread/java-thread-x-juc-executor-FutureTask.html
