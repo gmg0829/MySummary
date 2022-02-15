@@ -7,6 +7,12 @@
 @Before：每个测试方法前都会执行的方法；
 @After：每个测试方法前都会执行的方法；
 @Ignore：忽略方法；
+@InjectMocks
+@ParameterizedTest
+@ValueSource(strings = {"/com/example/demo/LocalClassLoader/evosuite.json"})
+@BeforeEach
+@MockBean
+@Mock
 
 
 超时测试
@@ -102,3 +108,4 @@ Mockito.spy(Object)	用spy监控真实对象,设置真实对象行为
 Mockito.doNothing().when(mock).[method]	不做任何返回
 Mockito.doCallRealMethod().when(mock).[method] //等价于Mockito.when(mock.[method]).thenCallRealMethod();	调用真实的方法
 reset(mock)	重置mock
+
