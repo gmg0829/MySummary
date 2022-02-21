@@ -38,3 +38,6 @@ cat file | awk '{a+=$(NF-1);b++}END{print a/b}'
 - $NF是最后一个字段，$(NF-1)是倒数第二个字段
 - a+=$(NF-1)对所有值累加, b++计数
 
+ awk '{print $9}' access.log | sort | uniq -c | sort
+ awk '($9 ~ /404/)' access.log
+ 

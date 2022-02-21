@@ -47,6 +47,11 @@ rename "s/$//.txt/" *
 # 把所有以.txt结尾的文件名的.txt删掉
 rename "s//.txt//" *
 
+# gz
+gzip a.txt
+gunzip a.gz -d 解压位置
+
+
 
 
 

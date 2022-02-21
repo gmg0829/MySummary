@@ -45,3 +45,5 @@ FlowNode即节点的父类，在activiti里节点分为三类，分别是Event(�
 14 SequenceFlow
 SequenceFlow就是流程图的线的相关信息，定义一根线，必须要知道是从哪个节点通过这根线到哪个节点，即源节点到目标节点的信息，而SequenceFlow这个对象可以取到这些信息。而上面提到的IncomingFlows和OutgoingFlows都属于SequenceFlow。
 
+# 工具
+camunda-modeler
