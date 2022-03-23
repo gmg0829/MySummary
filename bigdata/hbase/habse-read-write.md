@@ -8,7 +8,7 @@ HBase采用LSM树架构，天生适用于写多读少的应用场景。在真实
 
 2）Region写入阶段：RegionServer接收到写入请求之后将数据解析出来，首先写入WAL(Write-Ahead-Log)，再写入对应Region列簇的MemStore。
 
-3）MemStore Flush阶段：当Region中MemStore容量超过一定阈值，系统会异步执行f lush操作，将内存中的数据写入文件，形成HFile
+3）MemStore Flush阶段：当Region中MemStore容量超过一定阈值，系统会异步执行flush操作，将内存中的数据写入文件，形成HFile
 
 
 ### BulkLoad
