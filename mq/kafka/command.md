@@ -89,3 +89,9 @@ bin/kafka-consumer-groups.sh --bootstrap-server 127.0.0.1:9092 --list
 bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --reset-offsets --group consumergroup1 --topic topic1 --to-latest
 bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic my-topic --partitions 1 --replication-factor 1 
 
+
+19 写入文件，消费文件
+
+nohup bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topicName --from-beginning >>a.txt &
+cat a.txt | ./kafka-console-producer.sh --broker-list node86:9092 --sync --topic t_cdr
+
