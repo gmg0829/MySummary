@@ -13,7 +13,7 @@
 # 证书
 软件设计师、英语四级、计算机等级证书、蓝桥杯三等奖等。
 # 技能清单
-- 语言：精通Java,了解Shell、Vue、Python、Goland。
+- 语言：精通Java,了解Shell、Vue、Python、Golang。
 - 基础框架：SpringBoot/Mybatis/Netty/Spring Security。
 - 微服务：SpringCloud、Spring Cloud Alibaba、Dubbo、Grpc。
 - 大数据：了解Hbase、Spark，ES、Flink。

@@ -26,3 +26,5 @@ grant all to public;//这条比较重要，授予所有权限(all)给所有用�
 exp iafp/iafp_sdm@10.224.32.12:1521/ora12c owner=iafp file=/iafp/gmg/sdm.dmp
 imp iafp/iafp_sdm@10.224.32.12:1521/ora12c owner=iafp file=/iafp/gmg/sdm.dmp full=y ignore=y
 
+https://blog.csdn.net/weixin_31091881/article/details/116313742
+

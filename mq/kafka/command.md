@@ -82,12 +82,16 @@ bin/kafka-server-start.sh config/server.properties &
 18 消费者组
 
 bin/kafka-consumer-groups.sh --bootstrap-server 127.0.0.1:9092 --list
-./kafka-consumer-groups.sh --bootstrap-server 10.3.70.109:9092 --describe --group test_group2
+./kafka-consumer-groups.sh --bootstrap-server 10.3.70.109:9092  --group test_group2 --describe
 
 
 
-bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --reset-offsets --group consumergroup1 --topic topic1 --to-latest
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --reset-offsets --group consumergroup1 --topic topic1 --to-latest --execute
 bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic my-topic --partitions 1 --replication-factor 1 
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group test-group --reset-offsets --all-topics --to-earliest --execute
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group test-group --reset-offsets --all-topics --to-datetime 2017-08-04T14:30:00.000
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group test-group --reset-offsets --all-topics --to-offset 500000 --execute
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group test-group --reset-offsets --all-topics --shift-by -100000 --execute
 
 
 19 写入文件，消费文件

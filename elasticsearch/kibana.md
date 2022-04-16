@@ -19,3 +19,6 @@ bin/kibana-plugin list
 bin/kibana-plugin install
 bin/kibana-plugin remove
 ```
+
+## kql
+
